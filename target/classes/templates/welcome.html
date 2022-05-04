@@ -22,25 +22,37 @@
     <div class="starter-template">
         <h1>A forma mais fácil de trocar livros </h1>
         <h2>
-            <span th:text="'Bem vindo, ' + ${message}"></span>
+            <span th:text="'Bem vindo, ' "></span>
         </h2>
     </div>
-
-    <ol>
-        <li th:each="task : ${tasks}" th:text="${task}"></li>
-    </ol>
-    <form method="post" th:action="@{/users/}" th:object="${userInfo}">
-        <input id="firstName" placeholder="Enter First Name" required type="text" th:field="*{firstName}"/>
-        <input id="lastName" placeholder="Enter Last Name" required type="text" th:field="*{lastName}"/>
-        <select id="role" required th:field="*{role}">
-            <option value="" hidden>Select a role</option>
-            <option value="GUEST" hidden>GUEST</option>
-            <option value="USER" hidden>USER</option>
-            <option value="ADMIN" hidden>ADMIN</option>
-        </select>
+    <form method="post" th:action="@{/pessoas/}" th:object="${pessoa}" class="col card p-3 mb-5">
+        <div class="form-group">
+            <label for="nomeCompleto">First Name</label>
+            <input id="nomeCompleto" placeholder="Enter First Name" required type="text" th:field="*{nomeCompleto}"
+                   class="form-control"/>
         </div>
-        <input type="submit" value="Create User">
+        <div class="form-group">
+            <label for="cpf">Last Name</label>
+            <input id="cpf" placeholder="Enter Last Name" required type="text" th:field="*{cpf}"
+                   class="form-control"/>
+        <input type="submit" class="btn btn-primary" value="Create User">
     </form>
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>ID</th>
+            <th>CPF</th>
+            <th>Nome</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(pessoas)}">
+            <td colspan="5">No Records found. Add some...!</td>
+        </tr>
+        <tr th:each="pessoa : ${pessoas}">
+            <td th:text="${pessoa.id}"></td>
+            <td th:text="${pessoa.cpf}"></td>
+            <td th:text="${pessoa.nomeCompleto}"></td>
+        </tr>
+    </table>
 
 </main>
 <!-- /.container -->
