@@ -11,16 +11,16 @@ import ufrn.br.web.repositoreis.PessoaRepository;
 
 @Service
 @AllArgsConstructor
-@RestController
 public class PessoaService {
 
     @Autowired
     private PessoaRepository pessoaRepository;
 
-    @GetMapping("/pessoa/{id}")
-    public Pessoa findPessoalByID(@PathVariable Long id) {
+    public Pessoa findPessoalByID(Long id) {
         return pessoaRepository.getById(id);
     }
+
+    public Pessoa savePessoa(Pessoa pessoa) {return pessoaRepository.save(pessoa); }
 
 
 }

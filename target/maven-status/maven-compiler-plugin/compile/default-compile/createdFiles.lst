@@ -1,0 +1,10 @@
+ufrn\br\web\services\PessoaService.class
+ufrn\br\web\model\Pessoa.class
+ufrn\br\web\model\EnderecoPessoa.class
+ufrn\br\web\controllers\PessoaController.class
+ufrn\br\web\model\Endereco.class
+ufrn\br\web\model\Telefone.class
+ufrn\br\web\model\TelefonePessoa.class
+ufrn\br\web\model\TelefoneID.class
+ufrn\br\web\WebApplication.class
+ufrn\br\web\repositoreis\PessoaRepository.class
