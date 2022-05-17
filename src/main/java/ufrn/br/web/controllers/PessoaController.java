@@ -16,7 +16,6 @@ import java.util.List;
 
 @Controller
 @Slf4j
-@RequestMapping("/pessoas")
 public class PessoaController {
 
     @Autowired
