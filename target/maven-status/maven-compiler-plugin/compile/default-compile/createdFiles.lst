@@ -1,4 +1,7 @@
+ufrn\br\web\config\SpringSecurityConfiguration.class
 ufrn\br\web\services\PessoaService.class
+ufrn\br\web\controllers\LoginController.class
+ufrn\br\web\controllers\ErrorController.class
 ufrn\br\web\model\Pessoa.class
 ufrn\br\web\model\EnderecoPessoa.class
 ufrn\br\web\controllers\PessoaController.class

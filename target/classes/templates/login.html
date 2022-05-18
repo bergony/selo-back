@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Sebo Virtual</title>
+
+  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+  <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+<div class="container col-3">
+  <h2 class="form-signin-heading">Bem Vindo! Sebo Virtual</h2>
+  <div th:if="${param.error}" class="alert alert-danger">
+    Nome de usuário e senha inválidos.
+  </div>
+  <div th:if="${param.logout}" class="alert alert-success">
+    Você foi desconectado.
+  </div>
+  <form class="form-signin" method="POST" th:action="@{/login}">
+    <p>
+      <label for="username" class="sr-only">Nome do usuário</label>
+      <input type="text" id="username" name="username" class="form-control"
+             placeholder="Nome do usuário" required autofocus>
+    </p>
+    <p>
+      <label for="password" class="sr-only">Senha</label>
+      <input type="password" id="password" name="password" class="form-control"
+             placeholder="Senha" required>
+    </p>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Conecte-se
+    </button>
+  </form>
+</div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>

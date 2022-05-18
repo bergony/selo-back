@@ -24,6 +24,7 @@ public class Pessoa {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dataNascimento;
 
+    @Column(nullable = false)
     private String cpf;
 
     private String nomeCompleto;
