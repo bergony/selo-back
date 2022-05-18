@@ -14,8 +14,10 @@ import ufrn.br.web.services.PessoaService;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 @Controller
 @Slf4j
+@RequestMapping("/pessoas")
 public class PessoaController {
 
     @Autowired
@@ -26,12 +28,12 @@ public class PessoaController {
         List<Pessoa> pessoas = pessoaService.findAll();
         model.addAttribute("pessoas", pessoas);
         model.addAttribute("pessoa", new Pessoa());
-        return "welcome";
+        return "pessoas";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String savePessoa(Model model, @ModelAttribute Pessoa pessoa) {
         Pessoa user = pessoaService.savePessoa(pessoa);
-        return "redirect:/welcome/";
+        return "redirect:/pessoas/";
     }
 }
