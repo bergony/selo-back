@@ -13,8 +13,6 @@ public class LoginController {
     public String index() {
         return "login";
     }
-
-
     @RequestMapping("/login-error")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);
