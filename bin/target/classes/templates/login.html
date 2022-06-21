@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Selo Virtual</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+<!-- Section: Design Block -->
+<section class="text-center">
+    <div class="bg-image"
+         style="background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+            height: 100vh">
+
+        <div class="row my-auto h-100">
+        <div class="card rounded mt-5 py-5 px-md-5 mx-auto shadow-5-strong  align-self-center" style="
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        width: 30rem;
+        ">
+                <div class="col-12 my-auto">
+                    <h2 class="form-signin-heading">Bem Vindo! Selo Virtual</h2>
+                    <div th:if="${param.error}" class="alert alert-danger">
+                        Nome de usuário e senha inválidos.
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success">
+                        Você foi desconectado.
+                    </div>
+                    <form class="form-signin" method="POST" th:action="@{/login}">
+                        <p>
+                            <label for="username" class="sr-only">Nome do usuário</label>
+                            <input type="text" id="username" name="username" class="form-control"
+                                   placeholder="Nome do usuário" required autofocus>
+                        </p>
+                        <p>
+                            <label for="password" class="sr-only">Senha</label>
+                            <input type="password" id="password" name="password" class="form-control"
+                                   placeholder="Senha" required>
+                        </p>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Conecte-se
+                        </button>
+
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastra-se?
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</section>
+</body>
+</html>
