@@ -2,13 +2,8 @@ package ufrn.br.web.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
@@ -19,10 +14,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Livro {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "id", nullable = false)
+	private Long id;
+
 	@Column(name = "edicao")
 	private String edicao;
 	@Column(name = "isbn")

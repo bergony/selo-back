@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import ufrn.br.web.model.Pessoa;
 import ufrn.br.web.services.PessoaService;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -34,12 +38,21 @@ public class PessoaController {
         return "redirect:/pessoas/";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(Model model, @ModelAttribute Pessoa pessoa) {
+    @RequestMapping(value = "/login", method = RequestMethod.POST, params = "action=logar")
+    public String logar(Model model, @ModelAttribute Pessoa pessoa) {
+        List<Pessoa> pessoas = pessoaService.findAll();
+        model.addAttribute("pessoas", pessoas);
+        model.addAttribute("pessoa", new Pessoa());
+        return "home";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST, params = "action=cadastrar")
+    public String cadastrar(Model model, @ModelAttribute Pessoa pessoa) {
         List<Pessoa> pessoas = pessoaService.findAll();
         model.addAttribute("pessoas", pessoas);
         model.addAttribute("pessoa", new Pessoa());
         return "pessoas";
     }
+
 
 }

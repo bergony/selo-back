@@ -1,3 +1,4 @@
+C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\model\Editora.java
 C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\repositoreis\PessoaRepository.java
 C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\services\PessoaService.java
 C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\config\SpringSecurityConfiguration.java
@@ -7,7 +8,9 @@ C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\controllers\Lo
 C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\controllers\PessoaController.java
 C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\model\EnderecoPessoa.java
 C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\model\TelefonePessoa.java
+C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\model\Livro.java
 C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\model\TelefoneID.java
 C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\model\Pessoa.java
 C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\model\Endereco.java
+C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\model\Genero.java
 C:\Users\Esig\IdeaProjects\sebo-virtual\src\main\java\ufrn\br\web\model\Telefone.java

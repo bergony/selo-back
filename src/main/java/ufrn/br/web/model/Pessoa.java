@@ -8,21 +8,19 @@ import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-
-@Entity
 @Getter
 @Setter
 @ToString
-public class Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Pessoa extends Usuario {
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date dataNascimento;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Calendar dataNascimento;
 
     @Column(nullable = false)
     private String cpf;

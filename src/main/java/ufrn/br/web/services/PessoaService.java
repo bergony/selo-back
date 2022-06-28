@@ -20,7 +20,7 @@ public class PessoaService {
     @Autowired
     private PessoaRepository pessoaRepository;
 
-    public Pessoa findPessoalByID(Long id) {
+    public Pessoa findPessoalByID(int id) {
         return pessoaRepository.getById(id);
     }
     public List<Pessoa> findAll() {
@@ -28,8 +28,6 @@ public class PessoaService {
     }
 
     public Pessoa savePessoa(Pessoa pessoa) {
-        pessoa.setDataNascimento(new Date());
-
         return pessoaRepository.save(pessoa); }
 
 

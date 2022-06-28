@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import ufrn.br.web.model.Pessoa;
 
 @Repository
-public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
+public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 }
