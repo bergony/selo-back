@@ -26,6 +26,7 @@ public class Livro {
 	private String isbn;
 	@Column(name = "titulo")
 	private String titulo;
+
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "data_lancamento")
 	private Date data_lancamento;

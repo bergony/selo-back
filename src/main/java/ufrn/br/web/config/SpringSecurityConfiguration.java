@@ -11,11 +11,16 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .anyRequest().authenticated()
+                .
+                anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .successForwardUrl("/pessoas/login/")
+                .and()
+                .logout().    //logout configuration
+                logoutUrl("/appLogout").
+                logoutSuccessUrl("/login")
                 .permitAll();
     }
 

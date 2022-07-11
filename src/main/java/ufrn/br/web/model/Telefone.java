@@ -6,15 +6,15 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data@Entity
-@IdClass(TelefoneID.class)
+@Data
+@Entity
 public class Telefone implements Serializable {
 
     @Id
-    @GeneratedValue
-    private String ddd;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Id
+    private String ddd;
     private String numero;
 
 

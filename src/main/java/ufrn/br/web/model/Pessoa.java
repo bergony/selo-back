@@ -16,7 +16,11 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class Pessoa extends Usuario {
+@Entity
+public class Pessoa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
@@ -26,4 +30,19 @@ public class Pessoa extends Usuario {
     private String cpf;
 
     private String nomeCompleto;
+
+    private String username;
+
+    private String email;
+
+    private String senha;
+
+    @ManyToOne
+    @JoinColumn(name = "telefone_id")
+    private Telefone telefone;
+
+    @OneToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
+
 }
