@@ -1115,3 +1115,27 @@ Caused by: java.lang.IllegalArgumentException: 071.350.834-50
 	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:316)
 	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:134)
 	... 156 more
+2022-07-16 17:07:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'59063-650' (ENDERECO: ""CEP"" BIGINT NOT NULL)"; SQL statement:
+insert into endereco (bairro, cep, cidade, estado, logradouro, numero, id) values (?, ?, ?, ?, ?, ?, ?) [22018-200]
+2022-07-16 17:09:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'59063-650' (ENDERECO: ""CEP"" BIGINT NOT NULL)"; SQL statement:
+insert into endereco (bairro, cep, cidade, estado, logradouro, numero, id) values (?, ?, ?, ?, ?, ?, ?) [22018-200]
+2022-07-16 17:10:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'59063-650' (ENDERECO: ""CEP"" BIGINT NOT NULL)"; SQL statement:
+insert into endereco (bairro, cep, cidade, estado, logradouro, numero, id) values (?, ?, ?, ?, ?, ?, ?) [22018-200]
+2022-07-16 17:11:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'59063-650' (ENDERECO: ""CEP"" BIGINT NOT NULL)"; SQL statement:
+insert into endereco (bairro, cep, cidade, estado, logradouro, numero, id) values (?, ?, ?, ?, ?, ?, ?) [22018-200]
+2022-07-16 17:13:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'59063-650' (ENDERECO: ""CEP"" BIGINT NOT NULL)"; SQL statement:
+insert into endereco (bairro, cep, cidade, estado, logradouro, numero, id) values (?, ?, ?, ?, ?, ?, ?) [22018-200]
+2022-07-16 17:15:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'59063-650' (ENDERECO: ""CEP"" BIGINT NOT NULL)"; SQL statement:
+insert into endereco (bairro, cep, cidade, estado, logradouro, numero, id) values (?, ?, ?, ?, ?, ?, ?) [22018-200]
+2022-07-16 17:16:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'59063-650' (ENDERECO: ""CEP"" BIGINT NOT NULL)"; SQL statement:
+insert into endereco (bairro, cep, cidade, estado, logradouro, numero, id) values (?, ?, ?, ?, ?, ?, ?) [22018-200]
+2022-07-16 17:16:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'59063-650' (ENDERECO: ""CEP"" BIGINT NOT NULL)"; SQL statement:
+insert into endereco (bairro, cep, cidade, estado, logradouro, numero, id) values (?, ?, ?, ?, ?, ?, ?) [22018-200]

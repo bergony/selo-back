@@ -5,28 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec86a937-2629-487a-9810-5e418f5ce407" name="Changes" comment="Finalizado primeira parte do login">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/EnderocoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/TelefoneRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/exemplo.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/data/exemplo.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/SpringSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/SpringSecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Administrador.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Comum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Editora.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/EnderecoPessoa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Livro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Livro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/exemplo.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/data/exemplo.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/SpringSecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Endereco.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Pessoa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Telefone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Telefone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/TelefoneID.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/TelefonePessoa.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/PessoaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/PessoaRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/config/SpringSecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/config/SpringSecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/EnderecoPessoa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pessoas.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pessoas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/error.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/pessoas.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/pessoas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/config/SpringSecurityConfiguration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/PessoaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/PessoaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Endereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Endereco.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Pessoa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Pessoa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/TelefonePessoa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Telefone.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Telefone.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/PessoaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/PessoaRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/PessoaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/PessoaService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +51,7 @@
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -237,6 +246,76 @@
           <properties class="org.thymeleaf.exceptions.TemplateInputException" package="org.thymeleaf.exceptions" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="105" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="109" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

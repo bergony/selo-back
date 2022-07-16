@@ -1,22 +1,23 @@
 package ufrn.br.web.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Entity
 public class Telefone implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String ddd;
     private String numero;
 
-
+    @OneToOne(mappedBy = "telefone")
+    private Pessoa pessoa;
 
 }

@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("ALL")
@@ -35,18 +36,32 @@ public class PessoaController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String savePessoa(Model model, @ModelAttribute Pessoa pessoa) {
         Pessoa user = pessoaService.savePessoa(pessoa);
-        return "redirect:/pessoas/";
+
+        if(user == null){
+            model.addAttribute("erros", "Usario ja cadastrado");
+        }else{
+            model.addAttribute("pessoa", new Pessoa());
+        }
+        List<Pessoa> pessoas = pessoaService.findAll();
+        model.addAttribute("pessoas", pessoas);
+        return "pessoas";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST, params = "action=logar")
+    @RequestMapping(value = "/index", method = RequestMethod.POST, params = "action=logar")
     public String logar(Model model, @ModelAttribute Pessoa pessoa) {
         List<Pessoa> pessoas = pessoaService.findAll();
         model.addAttribute("pessoas", pessoas);
         model.addAttribute("pessoa", new Pessoa());
+        List<String> erros = pessoaService.autenticarPessoa(pessoa);
+        if(!erros.isEmpty()){
+            model.addAttribute("erros", erros);
+            return "login";
+        }
+
         return "home";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST, params = "action=cadastrar")
+    @RequestMapping(value = "/index", method = RequestMethod.POST, params = "action=cadastrar")
     public String cadastrar(Model model, @ModelAttribute Pessoa pessoa) {
         List<Pessoa> pessoas = pessoaService.findAll();
         model.addAttribute("pessoas", pessoas);

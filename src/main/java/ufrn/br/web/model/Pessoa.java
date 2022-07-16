@@ -17,9 +17,12 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
+@Table(name = "Pessoa", indexes = {
+        @Index(name = "idx_pessoa_endereco_id", columnList = "endereco_id")
+})
 public class Pessoa {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -31,18 +34,19 @@ public class Pessoa {
 
     private String nomeCompleto;
 
+    @Column(unique=true)
     private String username;
 
     private String email;
 
-    private String senha;
+    private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "telefone_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "telefone_id", referencedColumnName = "id")
     private Telefone telefone;
 
-    @OneToOne
-    @JoinColumn(name = "endereco_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
 
 }

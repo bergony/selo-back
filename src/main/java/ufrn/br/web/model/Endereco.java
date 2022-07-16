@@ -1,30 +1,37 @@
 package ufrn.br.web.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Entity
 public class Endereco {
 
     @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
     private String cidade;
 
+    private String bairro;
+
     private Long numero;
 
-    private long cep;
+    @Column(name = "cep")
+    private String cep;
 
     private String estado;
 
     private String logradouro;
 
+    @OneToOne(mappedBy = "endereco")
+    private Pessoa pessoa;
 
 }
