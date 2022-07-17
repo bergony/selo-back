@@ -14,7 +14,7 @@
 <body>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">SeloVirtual.com</a>
+    <a class="navbar-brand" th:href="@{/home}">SeloVirtual.com</a>
     <div class="col-lg-10 col-sm-12 d-flex flex-sm-row-reverse" >
         <div>
             <form th:action="@{/appVoltar}" method="POST">
@@ -25,21 +25,21 @@
     </div>
 </nav>
 
-    <div class="row mt-5 ml-2 mr-2">
+    <div class="row mt-5  ml-2 mr-2">
         <div class="card rounded mt-5 py-5 px-md-5 mx-auto shadow-5-strong  align-self-center" style="
         background: hsla(0, 100%, 100%, 1);
         backdrop-filter: blur(30px);
         width: 60rem;">
             <div class="starter-template">
-                <h1>A forma mais fácil de trocar livros </h1>
                 <h2>
                     <span th:text="'Bem vindo' "></span>
                 </h2>
+                <h1>A Forma Mais Fácil de Trocar Livros </h1>
             </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row mb-5">
         <div class="card rounded mt-3 py-5 px-md-5 pb-3 mx-auto shadow-5-strong  align-self-center" style="
         background: hsla(0, 100%, 100%, 1);
         backdrop-filter: blur(30px);
@@ -52,6 +52,12 @@
                     </td>
                     <br/>
                 </tr>
+                <tr th:each="sucesso : ${sucessos}">
+                    <td >
+                        <p class="alert alert-success" th:text="${sucesso}" ></p>
+                    </td>
+                    <br/>
+                </tr>
                 <form method="post" th:action="@{/pessoas/}" th:object="${pessoa}" class="col card p-3 mb-5">
                     <div class="form-group row">
                         <div class="col-lg-3 col-sm-12">
@@ -61,8 +67,8 @@
                                    class="form-control"/>
                         </div>
                         <div class="col-lg-3 col-sm-12">
-                            <label for="email">Email</label>
-                            <input id="email" placeholder="Email" required type="text"
+                            <label for="email">E-mail</label>
+                            <input id="email" placeholder="E-mail" required type="text"
                                    th:field="*{email}"
                                    class="form-control"/>
                         </div>
@@ -98,8 +104,8 @@
 
 
                         <div class="col-lg-3 col-sm-12">
-                            <label for="cep">cep</label>
-                            <input id="cep" placeholder="cep" required type="text" th:field="*{endereco.cep}"
+                            <label for="cep">CEP</label>
+                            <input id="cep" placeholder="CEP" required type="text" th:field="*{endereco.cep}"
                                    class="form-control"/>
                         </div>
 
@@ -110,26 +116,26 @@
                         </div>
 
                         <div class="col-lg-3 col-sm-12">
-                            <label for="numero">numero</label>
-                            <input id="numero" placeholder="numero" required type="text" th:field="*{endereco.numero}"
+                            <label for="numero">Número</label>
+                            <input id="numero" placeholder="Número" required type="text" th:field="*{endereco.numero}"
                                    class="form-control"/>
                         </div>
 
                         <div class="col-lg-3 col-sm-12">
-                            <label for="logradouro">logradouro</label>
-                            <input id="logradouro" placeholder="logradouro" required type="text" th:field="*{endereco.logradouro}"
+                            <label for="logradouro">Logradouro</label>
+                            <input id="logradouro" placeholder="Logradouro" required type="text" th:field="*{endereco.logradouro}"
                                    class="form-control"/>
                         </div>
 
                         <div class="col-lg-3 col-sm-12">
-                            <label for="bairro">bairro</label>
-                            <input id="bairro" placeholder="bairro" required type="text" th:field="*{endereco.bairro}"
+                            <label for="bairro">Bairro</label>
+                            <input id="bairro" placeholder="Bairro" required type="text" th:field="*{endereco.bairro}"
                                    class="form-control"/>
                         </div>
 
                         <div class="col-lg-3 col-sm-12">
-                            <label for="estado">estado</label>
-                            <input id="estado" placeholder="estado" required type="text" th:field="*{endereco.estado}"
+                            <label for="estado">UF</label>
+                            <input id="estado" placeholder="UF" required type="text" th:field="*{endereco.estado}"
                                    class="form-control"/>
                         </div>
 
@@ -138,19 +144,18 @@
                             <input id="id" placeholder="id" required type="text" th:field="*{id}"
                                    class="form-control"/>
                         </div>
-
-                        <div class="col-lg-3 col-sm-12" th:if="${usuarioLogando.isAdmin()}">
-                            <label>admin</label>
-                            <td th:switch="${pessoa.isAdmin()}">
-                                <span th:case="true" th:text="#{true}"/>
-                                <span th:case="false" th:text="#{false}"/>
-                            </td>
+                        <div class="col-lg-3 col-sm-12 mt-4" th:if="${usuarioLogando != null and usuarioLogando.isAdmin()}">
+                            <label for="admin">Administrador</label>
+                            <input id="admin" placeholder="admin" type="checkbox" th:field="*{admin}" data-toggle="switch"/>
                         </div>
 
                     </div>
-                        <div class="col-12 m-2">
-                            <input type="submit" class="btn btn-primary" value="Create User">
+                        <div class="col-12 m-2" th:if="${usuarioLogando == null}">
+                            <input type="submit" class="btn btn-primary" value="Cadastre-se">
                         </div>
+                    <div class="col-12 m-2" th:if="${usuarioLogando != null and usuarioLogando.isAdmin()}">
+                        <input type="submit" class="btn btn-primary" value="Editar Usuário">
+                    </div>
                 </form>
 
             </div>

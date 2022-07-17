@@ -22,7 +22,6 @@ public class LoginController {
     private PessoaService pessoaService;
 
     private Pessoa usuarioLogando;
-
     private Stack<String> voltar = new Stack<>();
 
     @RequestMapping(value={"", "/", "login","/login/" })
@@ -52,13 +51,35 @@ public class LoginController {
         return voltar.pop();
     }
 
+    @RequestMapping("/home")
+    public String home(Model model) {
+        String login = usuarioLogado(model);
+        if (login != null) return login;
+
+        List<Pessoa> pessoas = pessoaService.findAll();
+        model.addAttribute("pessoas", pessoas);
+        model.addAttribute("usuarioLogando", usuarioLogando);
+        return "home";
+    }
+
+    private String usuarioLogado(Model model) {
+        if(usuarioLogando == null){
+            List<String> erros = new ArrayList<>();
+            usuarioLogando = null;
+            erros.add("Nenhum Usuário conectado");
+            model.addAttribute("erros", erros);
+            return "login";
+        }
+        return null;
+    }
+
     @RequestMapping(value = "/pessoas", method = RequestMethod.GET)
     public String getPessoas(Model model) {
         List<Pessoa> pessoas = pessoaService.findAll();
         model.addAttribute("pessoas", pessoas);
         model.addAttribute("pessoa", new Pessoa());
-        if(usuarioLogando == null)
-            return "login";
+        String login = usuarioLogado(model);
+        if (login != null) return login;
         return "pessoas";
     }
 
@@ -68,14 +89,19 @@ public class LoginController {
             pessoa.setId(null);
         Pessoa user = pessoaService.savePessoa(pessoa);
         if(user == null){
-            model.addAttribute("erros", "Usario ja cadastrado");
+            model.addAttribute("erros", "Usuário ja cadastrado!");
         }else{
             Pessoa pessoaLoad = new Pessoa();
             model.addAttribute("pessoa", new Pessoa());
+            List<String> sucessos = new ArrayList<>();
+            sucessos.add("Usuário salvo com sucesso!");
+            model.addAttribute("sucessos", sucessos);
+
         }
         List<Pessoa> pessoas = pessoaService.findAll();
         model.addAttribute("pessoas", pessoas);
-        return "pessoas";
+
+        return cadastrar(model, pessoa);
     }
 
     @RequestMapping(value = "/pessoas/index", method = RequestMethod.POST, params = "action=logar")
@@ -95,6 +121,7 @@ public class LoginController {
         return "home";
     }
 
+
     @RequestMapping(value = "/pessoas/index", method = RequestMethod.POST, params = "action=cadastrar")
     public String cadastrar(Model model, @ModelAttribute Pessoa pessoa) {
         List<Pessoa> pessoas = pessoaService.findAll();
@@ -102,18 +129,14 @@ public class LoginController {
         Pessoa load = new Pessoa();
         load.setId(0l);
         load.setAdmin(false);
-        Pessoa usuario = new Pessoa();
-        usuario.setAdmin(false);
         model.addAttribute("pessoa", load);
-        model.addAttribute("usuarioLogando", usuario);
-        voltar.push("login");
         return "pessoas";
     }
 
     @RequestMapping(value = "/configuracao")
     public String configuracao(Model model) {
-        if(usuarioLogando == null)
-            return "login";
+        String login = usuarioLogado(model);
+        if (login != null) return login;
         List<Pessoa> pessoas = pessoaService.findAll();
         model.addAttribute("pessoas", pessoas);
         model.addAttribute("pessoa", new Pessoa());
@@ -123,8 +146,8 @@ public class LoginController {
 
     @RequestMapping(value = "/deletar")
     public String deletar(Model model, @RequestParam(value = "id", required = false) Long id) {
-        if(usuarioLogando == null)
-            return "login";
+        String login = usuarioLogado(model);
+        if (login != null) return login;
         Pessoa pessoa = pessoaService.findPessoalByID(id);
         pessoaService.remover(pessoa);
         List<Pessoa> pessoas = pessoaService.findAll();
@@ -135,11 +158,12 @@ public class LoginController {
 
     @RequestMapping(value = "/editar")
     public String editar(Model model, @RequestParam(value = "id", required = false) Long id) {
-        if(usuarioLogando == null)
-            return "login";
+        String login = usuarioLogado(model);
+        if (login != null) return login;
         Pessoa pessoa = pessoaService.findPessoalByID(id);
-        model.addAttribute("pessoa", pessoa);
+
         model.addAttribute("usuarioLogando", usuarioLogando);
+        model.addAttribute("pessoa", pessoa);
         voltar.push("configuracao");
         return "pessoas";
     }
