@@ -21,8 +21,8 @@ public class PessoaService {
     @Autowired
     private TelefoneRepository telefoneRepository;
 
-    public Pessoa findPessoalByID(int id) {
-        return pessoaRepository.getById(id);
+    public Pessoa findPessoalByID(Long id) {
+        return pessoaRepository.findById(id).orElse(null);
     }
     public List<Pessoa> findAll() {
         return pessoaRepository.findAll();
@@ -33,7 +33,7 @@ public class PessoaService {
 
         Pessoa pessoaJaCadstrada = pessoaRepository.findByUserNameAndPassword(pessoa.getUsername());
 
-        if(pessoaJaCadstrada != null)
+        if(pessoaJaCadstrada != null && pessoa.getId() == null)
             return null;
 
 
@@ -49,7 +49,19 @@ public class PessoaService {
         }
         if(!pessoa.getPassword().equals(pessoaValidar.getPassword())){
             erros.add("Senha Invalido");
+        }else {
+            pessoa = pessoaValidar;
         }
         return erros;
+    }
+
+    public Pessoa fetchPessoa( Pessoa pessoa) {
+       return pessoaRepository.findByUserNameAndPassword(pessoa.getUsername());
+
+    }
+
+    public void remover(Pessoa pessoa) {
+        pessoaRepository.delete(pessoa);
+
     }
 }

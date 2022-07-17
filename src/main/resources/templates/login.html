@@ -24,7 +24,9 @@
                     <h2 class="form-signin-heading">Bem Vindo! Selo Virtual</h2>
 
                     <tr th:each="erro : ${erros}">
-                        <td th:text="${erro}" class="alert alert-danger" />
+                        <td >
+                            <p class="alert alert-danger" th:text="${erro}" ></p>
+                        </td>
                         <br/>
                     </tr>
                     <form class="form-signin" method="POST" th:action="@{/pessoas/index}">
@@ -32,6 +34,7 @@
                             <label for="username" class="sr-only">Nome do usuário</label>
                             <input type="text" id="username" name="username" class="form-control"
                                    placeholder="Nome do usuário" required autofocus>
+
                         </p>
                         <p>
                             <label for="password" class="sr-only">Senha</label>

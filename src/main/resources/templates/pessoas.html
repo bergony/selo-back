@@ -15,10 +15,17 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">SeloVirtual.com</a>
+    <div class="col-lg-10 col-sm-12 d-flex flex-sm-row-reverse" >
+        <div>
+            <form th:action="@{/appVoltar}" method="POST">
+                <input class="btn-secondary" type="submit" value="Voltar"/>
+            </form>
+
+        </div>
+    </div>
 </nav>
 
-<main role="main" class="container">
-    <div class="row my-auto h-100">
+    <div class="row mt-5 ml-2 mr-2">
         <div class="card rounded mt-5 py-5 px-md-5 mx-auto shadow-5-strong  align-self-center" style="
         background: hsla(0, 100%, 100%, 1);
         backdrop-filter: blur(30px);
@@ -33,95 +40,111 @@
     </div>
 
     <div class="row">
-        <div class="card rounded mt-5 py-5 px-md-5 pb-3 mx-auto shadow-5-strong  align-self-center" style="
+        <div class="card rounded mt-3 py-5 px-md-5 pb-3 mx-auto shadow-5-strong  align-self-center" style="
         background: hsla(0, 100%, 100%, 1);
         backdrop-filter: blur(30px);
         width: 60rem;
         ">
             <div class="card-body">
                 <tr th:each="erro : ${erros}">
-                    <td th:text="${erro}" class="alert alert-danger" />
+                    <td >
+                        <p class="alert alert-danger" th:text="${erro}" ></p>
+                    </td>
                     <br/>
                 </tr>
                 <form method="post" th:action="@{/pessoas/}" th:object="${pessoa}" class="col card p-3 mb-5">
                     <div class="form-group row">
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="nomeCompleto">Nome Completo</label>
                             <input id="nomeCompleto" placeholder="Nome Completo" required type="text"
                                    th:field="*{nomeCompleto}"
                                    class="form-control"/>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="email">Email</label>
                             <input id="email" placeholder="Email" required type="text"
                                    th:field="*{email}"
                                    class="form-control"/>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
 
                             <label for="dataNascimento">Data Nascimento</label>
                             <input id="dataNascimento" placeholder="Data Nascimento" required type="date"
                                    th:field="*{dataNascimento}"
                                    class="form-control"/>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="Usuário">Usuário</label>
                             <input id="Usuário" placeholder="Usuário" required type="text" th:field="*{username}"
                                    class="form-control"/>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="Senha">Senha</label>
                             <input id="Senha" placeholder="Senha" required type="text" th:field="*{password}"
                                    class="form-control"/>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="cpf">CPF</label>
                             <input id="cpf" placeholder="CPF" required type="text" th:field="*{cpf}"
                                    pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}"
                                    title="Digite um CPF no formato: xxx.xxx.xxx-xx ou xxxxxxxxxxx"
                                    class="form-control"/>
                         </div>
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="telefone">Telefone</label>
                             <input id="telefone" placeholder="Telefone" required type="text" th:field="*{telefone.numero}"
                                    class="form-control"/>
                         </div>
 
 
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="cep">cep</label>
                             <input id="cep" placeholder="cep" required type="text" th:field="*{endereco.cep}"
                                    class="form-control"/>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="cidade">Cidade</label>
                             <input id="cidade" placeholder="Cidade" required type="text" th:field="*{endereco.cidade}"
                                    class="form-control"/>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="numero">numero</label>
                             <input id="numero" placeholder="numero" required type="text" th:field="*{endereco.numero}"
                                    class="form-control"/>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="logradouro">logradouro</label>
                             <input id="logradouro" placeholder="logradouro" required type="text" th:field="*{endereco.logradouro}"
                                    class="form-control"/>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="bairro">bairro</label>
                             <input id="bairro" placeholder="bairro" required type="text" th:field="*{endereco.bairro}"
                                    class="form-control"/>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-lg-3 col-sm-12">
                             <label for="estado">estado</label>
                             <input id="estado" placeholder="estado" required type="text" th:field="*{endereco.estado}"
                                    class="form-control"/>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-12" th:hidden="true">
+                            <label for="id">ID</label>
+                            <input id="id" placeholder="id" required type="text" th:field="*{id}"
+                                   class="form-control"/>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-12" th:if="${usuarioLogando.isAdmin()}">
+                            <label>admin</label>
+                            <td th:switch="${pessoa.isAdmin()}">
+                                <span th:case="true" th:text="#{true}"/>
+                                <span th:case="false" th:text="#{false}"/>
+                            </td>
                         </div>
 
                     </div>
@@ -130,28 +153,9 @@
                         </div>
                 </form>
 
-                <table class="table table-striped table-bordered">
-                    <tr>
-                        <th>ID</th>
-                        <th>Data</th>
-                        <th>CPF</th>
-                        <th>Nome</th>
-                    </tr>
-                    <tr th:if="${#lists.isEmpty(pessoas)}">
-                        <td colspan="5">No Records found. Add some...!</td>
-                    </tr>
-                    <tr th:each="pessoa : ${pessoas}">
-                        <td th:text="${pessoa.id}"></td>
-                        <td th:text="${#dates.format(pessoa.dataNascimento, 'dd-MM-yyyy')}"></td>
-                        <td th:text="${pessoa.cpf}"></td>
-                        <td th:text="${pessoa.nomeCompleto}"></td>
-                    </tr>
-                </table>
-
             </div>
         </div>
     </div>
-</main>
 <!-- /.container -->
 
 <script>

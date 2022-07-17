@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-@ToString
 @Entity
 public class Telefone implements Serializable {
 
