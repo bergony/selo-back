@@ -46,4 +46,10 @@ public class Pessoa {
 
     private boolean admin;
 
+    @OneToMany(mappedBy="pessoa")
+    private List<Livro> livros;
+
+    @OneToMany(mappedBy="pessoa")
+    private List<Emprestimo> emprestimos;
+
 }

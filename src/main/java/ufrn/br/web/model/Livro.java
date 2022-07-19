@@ -21,14 +21,20 @@ public class Livro {
 	private Long id;
 
 	@Column(name = "edicao")
-	private String edicao;
-	@Column(name = "isbn")
-	private String isbn;
+	private String descricao;
 	@Column(name = "titulo")
 	private String titulo;
 
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "data_lancamento")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date data_lancamento;
-	
+
+	@ManyToOne
+	@JoinColumn(name="pessoa_id", nullable=false)
+	private Pessoa pessoa;
+
+	@OneToOne
+	@JoinColumn(name = "emprestimo_id")
+	private Emprestimo emprestimo;
+
 }

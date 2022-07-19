@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import ufrn.br.web.model.Emprestimo;
+import ufrn.br.web.model.Livro;
 import ufrn.br.web.model.Pessoa;
+import ufrn.br.web.repositoreis.EmprestimoRepository;
+import ufrn.br.web.repositoreis.LivroRepository;
 import ufrn.br.web.services.PessoaService;
 
 import java.util.ArrayList;
@@ -20,6 +24,12 @@ public class LoginController {
 
     @Autowired
     private PessoaService pessoaService;
+
+    @Autowired
+    private LivroRepository livroRepository;
+
+    @Autowired
+    private EmprestimoRepository emprestimoRepository;
 
     private Pessoa usuarioLogando;
     private Stack<String> voltar = new Stack<>();
@@ -47,7 +57,13 @@ public class LoginController {
     public String appVoltar(Model model) {
         List<Pessoa> pessoas = pessoaService.findAll();
         model.addAttribute("pessoas", pessoas);
+
+        List<Livro> livros = livroRepository.findAll();
+        model.addAttribute("livros", livros);
         model.addAttribute("usuarioLogando", usuarioLogando);
+
+        if(voltar.isEmpty())
+            return "login";
         return voltar.pop();
     }
 
@@ -104,9 +120,39 @@ public class LoginController {
         return cadastrar(model, pessoa);
     }
 
+
+    @RequestMapping(value = "/livrosCadastrar/", method = RequestMethod.POST)
+    public String saveLivro(Model model, @ModelAttribute Livro livro) {
+        if(livro.getId() != null && livro.getId() == 0)
+            livro.setId(null);
+        livro.setPessoa(usuarioLogando);
+        Livro user = livroRepository.save(livro);
+        if(user == null){
+            model.addAttribute("erros", "Livro nao cadastrado!");
+        }else{
+            Livro pessoaLoad = new Livro();
+            model.addAttribute("livro", new Livro());
+            List<String> sucessos = new ArrayList<>();
+            sucessos.add("livro salvo com sucesso!");
+            model.addAttribute("sucessos", sucessos);
+
+        }
+        List<Livro> livros = livroRepository.findAllByUserName(usuarioLogando.getUsername());
+        model.addAttribute("livros", livros);
+
+
+        Livro load = new Livro();
+        load.setId(0l);
+        model.addAttribute("livro", load);
+        return "livros";
+    }
+
+
     @RequestMapping(value = "/pessoas/index", method = RequestMethod.POST, params = "action=logar")
     public String logar(Model model, @ModelAttribute Pessoa pessoa) {
         List<Pessoa> pessoas = pessoaService.findAll();
+        List<Livro> livros = livroRepository.findAll();
+        model.addAttribute("livros", livros);
         model.addAttribute("pessoas", pessoas);
         model.addAttribute("pessoa", new Pessoa());
         List<String> erros = pessoaService.autenticarPessoa(pessoa);
@@ -144,6 +190,17 @@ public class LoginController {
         return "configuracao";
     }
 
+    @RequestMapping(value = "/livros")
+    public String livros(Model model) {
+        String login = usuarioLogado(model);
+        if (login != null) return login;
+        List<Livro> livros = livroRepository.findAllByUserName(usuarioLogando.getUsername());
+        model.addAttribute("livros", livros);
+        model.addAttribute("livro", new Livro());
+        voltar.push("home");
+        return "livros";
+    }
+
     @RequestMapping(value = "/deletar")
     public String deletar(Model model, @RequestParam(value = "id", required = false) Long id) {
         String login = usuarioLogado(model);
@@ -166,6 +223,51 @@ public class LoginController {
         model.addAttribute("pessoa", pessoa);
         voltar.push("configuracao");
         return "pessoas";
+    }
+
+    @RequestMapping(value = "/editarLivro")
+    public String editarLivro(Model model, @RequestParam(value = "id", required = false) Long id) {
+        String login = usuarioLogado(model);
+        if (login != null) return login;
+        Livro livro = livroRepository.findById(id).orElse(null);
+        List<Livro> livros = livroRepository.findAllByUserName(usuarioLogando.getUsername());
+        model.addAttribute("livros", livros);
+
+        model.addAttribute("usuarioLogando", usuarioLogando);
+        model.addAttribute("livro", livro);
+        return "livros";
+    }
+
+
+    @RequestMapping(value = "/deletarLivro")
+    public String deletarLivro(Model model, @RequestParam(value = "id", required = false) Long id) {
+        String login = usuarioLogado(model);
+        if (login != null) return login;
+        Livro livro = livroRepository.findById(id).orElse(null);
+        livroRepository.delete(livro);
+        List<Livro> livros = livroRepository.findAll();
+        model.addAttribute("livros", livros);
+        model.addAttribute("livro", new Livro());
+        return "livros";
+    }
+
+    @RequestMapping(value = "/emprestimo")
+    public String emprestimo(Model model, @RequestParam(value = "id", required = false) Long id) {
+        String login = usuarioLogado(model);
+        if (login != null) return login;
+
+        Livro livro = livroRepository.findById(id).orElse(null);
+
+        Emprestimo emprestimo = new Emprestimo();
+
+        emprestimo.setLivro(livro);
+        emprestimo.setPessoa(usuarioLogando);
+        emprestimo = emprestimoRepository.save(emprestimo);
+        model.addAttribute("usuarioLogando", usuarioLogando);
+        List<Livro> livros = livroRepository.findAll();
+        model.addAttribute("livros", livros);
+
+        return "home";
     }
 
 }
