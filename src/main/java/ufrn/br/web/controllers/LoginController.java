@@ -139,8 +139,6 @@ public class LoginController {
         }
         List<Livro> livros = livroRepository.findAllByUserName(usuarioLogando.getUsername());
         model.addAttribute("livros", livros);
-
-
         Livro load = new Livro();
         load.setId(0l);
         model.addAttribute("livro", load);
@@ -196,7 +194,9 @@ public class LoginController {
         if (login != null) return login;
         List<Livro> livros = livroRepository.findAllByUserName(usuarioLogando.getUsername());
         model.addAttribute("livros", livros);
-        model.addAttribute("livro", new Livro());
+        Livro load = new Livro();
+        load.setId(0l);
+        model.addAttribute("livro", load);
         voltar.push("home");
         return "livros";
     }
