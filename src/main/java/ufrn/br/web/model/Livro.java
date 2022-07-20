@@ -33,7 +33,7 @@ public class Livro {
 	@JoinColumn(name="pessoa_id", nullable=false)
 	private Pessoa pessoa;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "emprestimo_id")
 	private Emprestimo emprestimo;
 

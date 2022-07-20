@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 import ufrn.br.web.model.Emprestimo;
 import ufrn.br.web.model.Pessoa;
 
+import java.util.List;
+
 @Repository
 public interface EmprestimoRepository extends JpaRepository<Emprestimo, Long> {
+
+    List<Emprestimo> findAllByPessoa(Pessoa username);
 
 }

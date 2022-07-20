@@ -2,6 +2,7 @@ package ufrn.br.web.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import ufrn.br.web.model.Pessoa;
 import ufrn.br.web.repositoreis.EnderocoRepository;
 import ufrn.br.web.repositoreis.PessoaRepository;
@@ -28,6 +29,16 @@ public class PessoaService {
         return pessoaRepository.findAll();
     }
 
+    public List<Pessoa> findAllUsarios(Model model, Pessoa usuarioLogado) {
+        List<Pessoa> pessoas = findAll();
+        pessoas.removeIf(p -> p.getId() == usuarioLogado.getId());
+
+        model.addAttribute("pessoas", pessoas);
+        model.addAttribute("pessoa", new Pessoa());
+
+        return pessoas;
+    }
+
     @Transactional
     public Pessoa savePessoa(Pessoa pessoa) {
 
@@ -39,27 +50,31 @@ public class PessoaService {
 
         return pessoaRepository.save(pessoa); }
 
-    public List<String> autenticarPessoa( Pessoa pessoa) {
+    public boolean autenticarPessoa(Model model, Pessoa pessoa) {
         List<String> erros = new ArrayList<>();
         Pessoa pessoaValidar = pessoaRepository.findByUserNameAndPassword(pessoa.getUsername());
 
         if(pessoaValidar == null){
             erros.add("Usuario Invalido");
-            return erros;
+            model.addAttribute("erros", erros);
+            return true;
         }
         if(!pessoa.getPassword().equals(pessoaValidar.getPassword())){
             erros.add("Senha Invalido");
-        }else {
-            pessoa = pessoaValidar;
         }
-        return erros;
+
+        if(!erros.isEmpty()) {
+            model.addAttribute("erros", erros);
+            return true;
+        }
+
+        return false;
     }
 
     public Pessoa fetchPessoa( Pessoa pessoa) {
        return pessoaRepository.findByUserNameAndPassword(pessoa.getUsername());
 
     }
-
     public void remover(Pessoa pessoa) {
         pessoaRepository.delete(pessoa);
 

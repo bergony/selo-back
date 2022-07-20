@@ -17,7 +17,7 @@
     <a class="navbar-brand" th:href="@{/home}">SeloVirtual.com</a>
     <div class="col-lg-10 col-sm-12 d-flex flex-sm-row-reverse" >
         <div>
-            <form th:action="@{/appVoltar}" method="POST">
+            <form th:action="@{/appVoltar(voltar=${voltar})}" method="POST">
                 <input class="btn-secondary" type="submit" value="Voltar"/>
             </form>
 

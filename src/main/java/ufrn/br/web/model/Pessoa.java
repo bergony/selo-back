@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Stack;
 
 @Getter
 @Setter
@@ -51,5 +52,8 @@ public class Pessoa {
 
     @OneToMany(mappedBy="pessoa")
     private List<Emprestimo> emprestimos;
+
+    @Transient
+    private Stack<String> voltar = new Stack<>();
 
 }

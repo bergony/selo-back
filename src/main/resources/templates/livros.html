@@ -18,6 +18,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand col-sm-12 col-lg-1" th:href="@{/home}">SeloVirtual.com</a>
+    <a class="navbar-brand col-sm-1 text-white" th:text="${usuarioLogando.nomeCompleto}"></a>
     <div class="col-lg-10 col-sm-12 d-flex flex-sm-row-reverse" >
         <div>
             <form th:action="@{/appVoltar}" method="POST">
@@ -41,7 +42,7 @@
                 <table class="table table-striped table-bordered table-wrapper-scroll-y my-custom-scrollbar">
                     <tr>
                         <th class="text-left">Titulo </th>
-                        <th class="text-center">Pessoa</th>
+                        <th class="text-center">Dono do livro</th>
                         <th class="text-center">Data</th>
                         <th class="text-right">Ações </th>
                     </tr>
@@ -50,15 +51,14 @@
                     </tr>
                     <tr th:each="livro : ${livros}">
                         <td class="text-left" th:text="${livro.titulo}"></td>
-
-                        <td class="text-left" th:text="${livro.pessoa.username}"></td>
+                        <td class="text-center" th:text="${livro.pessoa.nomeCompleto}"></td>
                         <td class="text-center" th:text="${#dates.format(livro.data_lancamento, 'dd/MM/yyyy')}"></td>
                         <td class="text-right">
-                            <a class="mr-2" th:href="@{/editarLivro(id=${livro.id})}">
+                            <a class="mr-2" th:href="@{/editarLivro(id=${livro.id}, admin=${usuarioLogando.id})}">
                                 <span class="glyphicon glyphicon-pencil" style="color:blue"></span>
                             </a>
-                            <a th:href="@{/deletarLivro(id=${livro.id})}">
-                                <span class="glyphicon glyphicon-trash" style="color:red"></span>
+                            <a th:href="@{/deletarLivro(id=${livro.id}, admin=${usuarioLogando.id})}">
+                                <span class="glyphicon glyphicon-trash" style="color:black"></span>
                             </a>
                         </td>
                     </tr>
@@ -70,24 +70,34 @@
                 <table class="table table-striped table-bordered table-wrapper-scroll-y my-custom-scrollbar">
                     <tr>
                         <th class="text-left">Titulo </th>
-                        <th class="text-center">Pessoa</th>
+                        <th class="text-center">Dono do livro</th>
+                        <th class="text-center">Solicitante </th>
+                        <th class="text-center">Status </th>
                         <th class="text-center">Data</th>
                         <th class="text-right">Ações </th>
                     </tr>
-                    <tr th:if="${#lists.isEmpty(livros)}">
+                    <tr th:if="${#lists.isEmpty(emprestimos)}">
                         <td colspan="6">Nenhum registro foi encontrado. adicione alguns...!</td>
                     </tr>
-                    <tr th:each="livro : ${livros}">
-                        <td class="text-left" th:text="${livro.titulo}"></td>
+                    <tr th:each="emprestimo : ${emprestimos}">
+                        <td class="text-left" th:text="${emprestimo.livro.titulo}"></td>
 
-                        <td class="text-left" th:text="${livro.pessoa.username}"></td>
-                        <td class="text-center" th:text="${#dates.format(livro.data_lancamento, 'dd/MM/yyyy')}"></td>
+                        <td class="text-center" th:text="${emprestimo.livro.pessoa.nomeCompleto}"></td>
+                        <td class="text-center"  th:text="${emprestimo.pessoa.nomeCompleto}"></td>
+                        <td class="text-center" th:if="${emprestimo.reposta}"> <span class="glyphicon glyphicon glyphicon-ok" style="color:green"></span></td>
+                        <td class="text-center" th:if="${!emprestimo.reposta}"> <span class="glyphicon glyphicon glyphicon-remove" style="color:red"></span></td>
+
+                        <td class="text-center" th:text="${#dates.format(emprestimo.livro.data_lancamento, 'dd/MM/yyyy')}"></td>
                         <td class="text-right">
-                            <a class="mr-2" th:href="@{/editar(id=${livro.id})}">
-                                <span class="glyphicon glyphicon-pencil" style="color:blue"></span>
+                            <a class="mr-2" th:if="${emprestimo.dono}" th:href="@{/aceitar(id=${emprestimo.id}, admin=${usuarioLogando.id})}">
+                                <span class="glyphicon glyphicon glyphicon-ok" style="color:green"></span>
                             </a>
-                            <a th:href="@{/deletar(id=${livro.id})}">
-                                <span class="glyphicon glyphicon-trash" style="color:red"></span>
+                            <a th:if="${emprestimo.dono}" th:href="@{/negar(id=${emprestimo.id}, admin=${usuarioLogando.id})}">
+                                <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                            </a>
+
+                            <a th:href="@{/deletarEmprestimo(id=${emprestimo.id}, admin=${usuarioLogando.id})}">
+                                <span class="glyphicon glyphicon-trash" style="color:black"></span>
                             </a>
                         </td>
                     </tr>
@@ -132,6 +142,12 @@
                         <div class="col-lg-3 col-sm-12" th:hidden="true">
                             <label for="id">ID</label>
                             <input id="id" placeholder="id" required type="text" th:field="*{id}"
+                                   class="form-control"/>
+                        </div>
+
+                        <div class="col-lg-3 col-sm-12" th:hidden="true">
+                            <label for="pessoa">pessoa</label>
+                            <input id="pessoa" placeholder="pessoa" th:field="*{pessoa}"
                                    class="form-control"/>
                         </div>
 

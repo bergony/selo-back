@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Entity
@@ -19,8 +20,13 @@ public class Emprestimo {
     private Long id;
 
     @OneToOne(mappedBy = "emprestimo")
-     Livro livro;
-    
-    @ManyToOne
+    @JoinColumn(name="livro_id")
+    Livro livro;
+    @ManyToOne()
     private Pessoa pessoa;
+
+    private boolean reposta;
+
+    @Transient
+    private boolean dono;
 }

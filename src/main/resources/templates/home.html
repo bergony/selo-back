@@ -15,6 +15,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand col-sm-1" th:href="@{/home}">SeloVirtual.com</a>
+    <a class="navbar-brand col-sm-1 text-white" th:text="${usuarioLogando.nomeCompleto}"></a>
     <div class="col-lg-10 col-sm-12 d-flex flex-sm-row-reverse" >
         <div class="ml-lg-2" th:if="${usuarioLogando.isAdmin()}">
             <form th:action="@{/configuracao}" method="POST">
