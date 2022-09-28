@@ -114,6 +114,17 @@ public class LoginController {
         usuarioLogando.getVoltar().push("home");
         return "livros";
     }
+    
+    @RequestMapping(value = "/livros")
+    public String livrosall(Model model) {
+        String login = loginService.usuarioLogado(model, usuarioLogando);
+        if (login != null) return login;
+
+        model.addAttribute("usuarioLogando", usuarioLogando);
+        livroService.carregar(model, usuarioLogando);
+        usuarioLogando.getVoltar().push("home");
+        return "meuslivros";
+    }
 
 
     @RequestMapping(value = "/emprestimo")
