@@ -121,21 +121,21 @@
                 <form method="post" th:action="@{/livrosCadastrar/}" th:object="${livro}"class="col card p-3 mb-5">
                     <div class="form-group row">
                         <div class="col-lg-3 col-sm-12">
-                            <label for="nomeCompleto">Nome Completo</label>
-                            <input id="nomeCompleto" placeholder="Nome Completo" required type="text"
+                            <label for="nomeCompleto">Nome do Livro</label>
+                            <input id="nomeCompleto" placeholder="Nome do Livro" required type="text"
                                    th:field="*{titulo}"
                                    class="form-control"/>
                         </div>
                         <div class="col-lg-3 col-sm-12">
 
-                            <label for="data_lancamento">Data Nascimento</label>
-                            <input id="data_lancamento" placeholder="Data Nascimento" required type="date"
+                            <label for="data_lancamento">Data</label>
+                            <input id="data_lancamento" placeholder="Data" required type="date"
                                    th:field="*{data_lancamento}"
                                    class="form-control"/>
                         </div>
                         <div class="col-lg-3 col-sm-12">
-                            <label for="Usuário">Descricao</label>
-                            <input id="Usuário" placeholder="Usuário" required type="text" th:field="*{descricao}"
+                            <label for="Usuário">Descrição</label>
+                            <input id="Usuário" placeholder="Descrição" required type="text" th:field="*{descricao}"
                                    class="form-control"/>
                         </div>
 
@@ -156,7 +156,7 @@
 
                     </div>
                     <div class="col-12 m-2">
-                        <input type="submit" class="btn btn-primary" value="Cadastre-se">
+                        <input type="submit" class="btn btn-primary" value="Cadastrar">
                     </div>
                 </form>
 

@@ -90,14 +90,22 @@ public class PessoaController {
     }
 
     @RequestMapping(value = "/deletar")
-    public String deletar(Model model, @RequestParam(value = "id", required = false) Long id) {
-        String login = usuarioLogado(model);
-        if (login != null) return login;
+    public String deletar(Model model, @RequestParam(value = "id", required = false) Long id, @RequestParam(value = "admin", required = false) Long admin) {
+
         Pessoa pessoa = pessoaService.findPessoalByID(id);
-        pessoaService.remover(pessoa);
+
+
+       pessoaService.remover(model, pessoa);
+
+
         List<Pessoa> pessoas = pessoaService.findAll();
+
+        usuarioLogando =  pessoaService.findPessoalByID(admin);
+        pessoas.removeIf(p -> p.getId() == usuarioLogando.getId());
+        model.addAttribute("usuarioLogando", usuarioLogando);
         model.addAttribute("pessoas", pessoas);
         model.addAttribute("pessoa", new Pessoa());
+
         return "configuracao";
     }
 

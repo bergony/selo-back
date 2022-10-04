@@ -115,7 +115,7 @@ public class LoginController {
         return "livros";
     }
     
-    @RequestMapping(value = "/livros")
+    @RequestMapping(value = "/livroslist")
     public String livrosall(Model model) {
         String login = loginService.usuarioLogado(model, usuarioLogando);
         if (login != null) return login;
