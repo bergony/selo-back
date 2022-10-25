@@ -17,13 +17,11 @@ import java.util.Stack;
 @Getter
 @Setter
 @Entity
-@Table(name = "Pessoa", indexes = {
-        @Index(name = "idx_pessoa_endereco_id", columnList = "endereco_id")
-})
-public class Pessoa {
+@Table(name = "Pessoa")
+public class Pessoa extends Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private Integer id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
@@ -44,8 +42,6 @@ public class Pessoa {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "endereco_id", referencedColumnName = "id")
     private Endereco endereco;
-
-    private boolean admin;
 
     @OneToMany(mappedBy="pessoa")
     private List<Livro> livros;

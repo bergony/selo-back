@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import ufrn.br.web.model.Pessoa;
 
 @Repository
-public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
+public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 
     @Query("select p from Pessoa p where p.username = :username")
     Pessoa findByUserNameAndPassword(@Param("username") String username);

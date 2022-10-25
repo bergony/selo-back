@@ -22,7 +22,7 @@ public class PessoaService {
     @Autowired
     private TelefoneRepository telefoneRepository;
 
-    public Pessoa findPessoalByID(Long id) {
+    public Pessoa findPessoalByID(Integer id) {
         return pessoaRepository.findById(id).orElse(null);
     }
     public List<Pessoa> findAll() {
