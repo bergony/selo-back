@@ -4,66 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec86a937-2629-487a-9810-5e418f5ce407" name="Changes" comment="Removindo null points .">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/PasswordConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/LivroDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/exception/SenhaInvalidaException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/UsuarioRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java" afterDir="false" />
+    <list default="true" id="ec86a937-2629-487a-9810-5e418f5ce407" name="Changes" comment="Refatorado segurancao e adicionado Usuario.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/CredenciaisDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/TokenDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/security/JwtAuthFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/security/JwtService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/EmprestimoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/EmprestimoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/ErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/ErrorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/LivroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/LivroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Livro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Livro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Pessoa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/PessoaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/PessoaRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/EmprestimoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/EmprestimoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/LivroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/LivroService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/ufrn.br/web/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/ufrn.br/web/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/configuracao.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/configuracao.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/livros.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/livros.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/WebApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/WebApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/EmprestimoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/EmprestimoController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/ErrorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/ErrorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/LivroController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/LivroController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/PessoaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/PessoaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Endereco.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Endereco.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Genero.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Genero.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Livro.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Livro.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Pessoa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Pessoa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Telefone.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Telefone.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/EnderocoRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/EnderocoRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/PessoaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/PessoaRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/TelefoneRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/TelefoneRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/EmprestimoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/EmprestimoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/LivroService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/LivroService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/LoginService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/PessoaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/PessoaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ufrn.br.web.WebApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ufrn.br.web.WebApplicationTests.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ufrn/br/web/WebApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ufrn/br/web/WebApplicationTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/web-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/web-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,20 +96,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Esig/Downloads/Projeto/sebo-virtual&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;2567a5ec9705eb7ac2c984033e06189d&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Esig/Downloads/Projeto/sebo-virtual",
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "2567a5ec9705eb7ac2c984033e06189d"
   }
-}</component>
+}]]></component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -210,6 +166,8 @@
       <workItem from="1666039945204" duration="571000" />
       <workItem from="1666604031091" duration="5090000" />
       <workItem from="1666687952816" duration="8232000" />
+      <workItem from="1666714947737" duration="681000" />
+      <workItem from="1666827990674" duration="2625000" />
     </task>
     <task id="LOCAL-00001" summary="Teste Commit">
       <created>1651681901537</created>
@@ -281,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664851670983</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Refatorado segurancao e adicionado Usuario.">
+      <created>1666715012480</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1666715012480</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +301,8 @@
     <MESSAGE value="Save" />
     <MESSAGE value="Save2" />
     <MESSAGE value="Removindo null points ." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removindo null points ." />
+    <MESSAGE value="Refatorado segurancao e adicionado Usuario." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatorado segurancao e adicionado Usuario." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -474,16 +440,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
           <line>33</line>
           <option name="timeStamp" value="293" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="295" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="296" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/LivroController.java</url>

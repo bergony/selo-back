@@ -49,7 +49,5 @@ public class Pessoa extends Usuario {
     @OneToMany(mappedBy="pessoa")
     private List<Emprestimo> emprestimos;
 
-    @Transient
-    private Stack<String> voltar = new Stack<>();
 
 }
