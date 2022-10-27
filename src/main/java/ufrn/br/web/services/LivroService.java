@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 public class LivroService {
-
+/*
     @Autowired
     LivroRepository livroRepository;
 
@@ -52,7 +52,7 @@ public class LivroService {
         return livroSaved;
 
     }
-
+/*
     public Livro editarLivro(Model model, Long id, Long admin){
 
         Livro livro = livroRepository.findById(id).orElse(null);
@@ -127,5 +127,6 @@ public class LivroService {
 
     public Livro findLivroEmprestimo(Emprestimo emprestimo) {
         return livroRepository.findByEmprestimoAtivo(emprestimo.getId());
-    }
+    }*/
+
 }

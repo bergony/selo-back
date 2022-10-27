@@ -1,53 +1,49 @@
 package ufrn.br.web.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ufrn.br.web.model.Pessoa;
 import ufrn.br.web.repositoreis.EmprestimoRepository;
 import ufrn.br.web.repositoreis.LivroRepository;
+import ufrn.br.web.repositoreis.PessoaRepository;
 import ufrn.br.web.services.PessoaService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-@Controller
+@RestController
+@RequestMapping("/api/pessoas")
+@RequiredArgsConstructor
 public class PessoaController {
+
+/*
+
+    private PessoaService pessoaService;*/
+
     @Autowired
-    private PessoaService pessoaService;
+    private PessoaRepository pessoaRepository;
 
-    private Pessoa usuarioLogando;
+    @GetMapping
+    public List<Pessoa> find(Pessoa filtro ){
+        ExampleMatcher matcher = ExampleMatcher
+                .matching()
+                .withIgnoreCase()
+                .withStringMatcher(
+                        ExampleMatcher.StringMatcher.CONTAINING );
 
-    @RequestMapping(value = "/pessoas", method = RequestMethod.GET)
-    public String getPessoas(Model model) {
-        List<Pessoa> pessoas = pessoaService.findAll();
-        model.addAttribute("pessoas", pessoas);
-        model.addAttribute("pessoa", new Pessoa());
-        String login = usuarioLogado(model);
-        if (login != null) return login;
-        return "pessoas";
-    }
-    private String usuarioLogado(Model model) {
-        if(usuarioLogando == null){
-            List<String> erros = new ArrayList<>();
-            usuarioLogando = null;
-            erros.add("Nenhum Usuário conectado");
-            model.addAttribute("erros", erros);
-            return "login";
-        }
-        return null;
+        Example example = Example.of(filtro, matcher);
+        return pessoaRepository.findAll(example);
     }
 
 
-    @RequestMapping(value = "/pessoas/", method = RequestMethod.POST)
-    public String savePessoa(Model model, @ModelAttribute Pessoa pessoa) {
-        if(pessoa.getId() == 0)
-            pessoa.setId(null);
+   /* @RequestMapping(value = "/salvar", method = RequestMethod.POST)
+    public String salvarPessoa(Model model, @ModelAttribute Pessoa pessoa) {
         Pessoa user = pessoaService.savePessoa(pessoa);
         if(user == null){
             model.addAttribute("erros", "Usuário ja cadastrado!");
@@ -64,13 +60,12 @@ public class PessoaController {
 
         return cadastrar(model, pessoa);
     }
-    @RequestMapping(value = "/pessoas/index", method = RequestMethod.POST, params = "action=cadastrar")
+    @RequestMapping(value = "/cadastrar", method = RequestMethod.POST, params = "action=cadastrar")
     public String cadastrar(Model model, @ModelAttribute Pessoa pessoa) {
         List<Pessoa> pessoas = pessoaService.findAll();
         model.addAttribute("pessoas", pessoas);
         Pessoa load = new Pessoa();
-        load.setId(0l);
-        load.setAdmin(false);
+        load.setId(0);
         model.addAttribute("pessoa", load);
         return "pessoas";
     }
@@ -81,9 +76,6 @@ public class PessoaController {
     public String editar(Model model, @RequestParam(value = "id", required = false) Long id, @RequestParam(value = "admin", required = false) Long admin) {
 
         Pessoa pessoa = pessoaService.findPessoalByID(id);
-        usuarioLogando =  pessoaService.findPessoalByID(admin);
-        usuarioLogando.getVoltar().push("configuracao");
-        model.addAttribute("usuarioLogando", usuarioLogando);
         model.addAttribute("pessoa", pessoa);
         model.addAttribute("voltar", "configuracao");
         return "pessoas";
@@ -94,19 +86,14 @@ public class PessoaController {
 
         Pessoa pessoa = pessoaService.findPessoalByID(id);
 
-
        pessoaService.remover(model, pessoa);
-
 
         List<Pessoa> pessoas = pessoaService.findAll();
 
-        usuarioLogando =  pessoaService.findPessoalByID(admin);
-        pessoas.removeIf(p -> p.getId() == usuarioLogando.getId());
-        model.addAttribute("usuarioLogando", usuarioLogando);
         model.addAttribute("pessoas", pessoas);
         model.addAttribute("pessoa", new Pessoa());
 
         return "configuracao";
-    }
+    }*/
 
 }

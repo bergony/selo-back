@@ -1,23 +1,26 @@
 package ufrn.br.web.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
-
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "livro")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Livro {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
+	@Column(name = "id")
 	private Long id;
 
 	@Column(name = "edicao")
@@ -25,8 +28,7 @@ public class Livro {
 	@Column(name = "titulo")
 	private String titulo;
 
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Temporal(TemporalType.DATE)
+	@Column
 	private Date data_lancamento;
 
 	@ManyToOne

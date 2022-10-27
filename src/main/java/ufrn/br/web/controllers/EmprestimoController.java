@@ -1,5 +1,6 @@
 package ufrn.br.web.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,8 @@ import ufrn.br.web.services.LivroService;
 import ufrn.br.web.services.PessoaService;
 
 @Controller
+@RequestMapping("/api/emprestimos")
+@RequiredArgsConstructor
 public class EmprestimoController {
 
 
@@ -22,7 +25,7 @@ public class EmprestimoController {
 
     @Autowired
     PessoaService pessoaService;
-    @RequestMapping(value = "/aceitar")
+  /*  @RequestMapping(value = "/aceitar")
     public String aceitar(Model model, @RequestParam(value = "id", required = false) Long id, @RequestParam(value = "admin", required = false) Long admin) {
         emprestimoService.responder(id, true, admin, model);
         return "livros";
@@ -38,5 +41,5 @@ public class EmprestimoController {
     public String deletar(Model model, @RequestParam(value = "id", required = false) Long id, @RequestParam(value = "admin", required = false) Long admin) {
         emprestimoService.deletar(id, false, admin, model);
         return "livros";
-    }
+    }*/
 }

@@ -18,6 +18,7 @@ import java.util.Stack;
 
 @Controller
 public class LoginController {
+/*
 
     private final LoginService loginService;
     private final PessoaService pessoaService;
@@ -30,11 +31,11 @@ public class LoginController {
         this.pessoaService = pessoaService;
         this.livroService = livroService;
     }
-
     @RequestMapping(value={"", "/", "login","/login/" })
     public String index() {
         return "login";
     }
+
     @RequestMapping("/login-error")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);
@@ -69,17 +70,13 @@ public class LoginController {
         return usuarioLogando.getVoltar().pop();
     }
 
-    @RequestMapping("/home")
+    @RequestMapping("/logar/home")
     public String home(Model model) {
-        String login = loginService.usuarioLogado(model, usuarioLogando);
-        if (login != null) return login;
 
         loginService.carregarLivrosDisponiveis(model, usuarioLogando);
         model.addAttribute("usuarioLogando", usuarioLogando);
         return "home";
     }
-
-
 
     @RequestMapping(value = "/configuracao")
     public String configuracao(Model model) {
@@ -92,33 +89,18 @@ public class LoginController {
         return "configuracao";
     }
 
-    @RequestMapping(value = "/pessoas/index", method = RequestMethod.POST, params = "action=logar")
+    @RequestMapping(value = "/logar/index", method = RequestMethod.POST, params = "action=logar")
     public String logar(Model model, @ModelAttribute Pessoa pessoa) {
 
-        usuarioLogando = pessoaService.fetchPessoa(pessoa);
-       if(pessoaService.autenticarPessoa(model, pessoa)) {
-           return "login";
-       }
         model.addAttribute("usuarioLogando", usuarioLogando);
         loginService.carregarLivrosDisponiveis(model, usuarioLogando);
         return "home";
     }
 
-    @RequestMapping(value = "/livros")
-    public String livros(Model model) {
-        String login = loginService.usuarioLogado(model, usuarioLogando);
-        if (login != null) return login;
 
-        model.addAttribute("usuarioLogando", usuarioLogando);
-        livroService.carregar(model, usuarioLogando);
-        usuarioLogando.getVoltar().push("home");
-        return "livros";
-    }
     
     @RequestMapping(value = "/livroslist")
     public String livrosall(Model model) {
-        String login = loginService.usuarioLogado(model, usuarioLogando);
-        if (login != null) return login;
 
         model.addAttribute("usuarioLogando", usuarioLogando);
         livroService.carregar(model, usuarioLogando);
@@ -127,15 +109,7 @@ public class LoginController {
     }
 
 
-    @RequestMapping(value = "/emprestimo")
-    public String emprestimo(Model model, @RequestParam(value = "id", required = false) Long id) {
+*/
 
-       loginService.emprestimo(model, usuarioLogando, id);
-        loginService.carregarLivrosDisponiveis(model, usuarioLogando);
-        model.addAttribute("usuarioLogando", usuarioLogando);
-        loginService.carregarLivrosDisponiveis(model, usuarioLogando);
-
-        return "home";
-    }
 
 }

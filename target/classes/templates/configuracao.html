@@ -39,7 +39,20 @@
         backdrop-filter: blur(30px);
         width: 100rem;
         ">
-      <div class="card-body table-responsive">
+        <tr th:each="erro : ${erros}">
+            <td >
+                <p class="alert alert-danger" th:text="${erro}" ></p>
+            </td>
+            <br/>
+        </tr>
+        <tr th:each="sucesso : ${sucessos}">
+            <td >
+                <p class="alert alert-success" th:text="${sucesso}" ></p>
+            </td>
+            <br/>
+        </tr>
+
+        <div class="card-body table-responsive">
                         <table class="table table-striped table-bordered table-wrapper-scroll-y my-custom-scrollbar">
                             <tr>
                                 <th class="text-left">Nome completo </th>
@@ -62,7 +75,7 @@
                                     <a class="mr-2" th:href="@{/editar(id=${pessoa.id}, admin=${usuarioLogando.id})}">
                                         <span class="glyphicon glyphicon-pencil" style="color:blue"></span>
                                     </a>
-                                    <a th:href="@{/deletar(id=${pessoa.id})}">
+                                    <a th:href="@{/deletar(id=${pessoa.id}, admin=${usuarioLogando.id})}">
                                         <span class="glyphicon glyphicon-trash" style="color:red"></span>
                                     </a>
 

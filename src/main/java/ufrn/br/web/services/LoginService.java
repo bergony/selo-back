@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 public class LoginService {
 
+/*
 
     private final LivroService livroService;
     private final EmprestimoService emprestimoService;
@@ -56,6 +57,7 @@ public class LoginService {
         carregarLivrosDisponiveis(model, usuarioLogado);
 
     }
+*/
 
 
 
