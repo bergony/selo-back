@@ -4,21 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec86a937-2629-487a-9810-5e418f5ce407" name="Changes" comment="Refatorado segurancao e adicionado Usuario.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/CredenciaisDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/TokenDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/security/JwtAuthFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/security/JwtService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="ec86a937-2629-487a-9810-5e418f5ce407" name="Changes" comment="Finalizado JWT e regras de negocios da autorizacao.">
       <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Pessoa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Pessoa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Pessoa.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +154,7 @@
       <workItem from="1666604031091" duration="5090000" />
       <workItem from="1666687952816" duration="8232000" />
       <workItem from="1666714947737" duration="681000" />
-      <workItem from="1666827990674" duration="2625000" />
+      <workItem from="1666827990674" duration="2686000" />
     </task>
     <task id="LOCAL-00001" summary="Teste Commit">
       <created>1651681901537</created>
@@ -246,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666715012480</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Finalizado JWT e regras de negocios da autorizacao.">
+      <created>1666830684329</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1666830684329</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -302,7 +296,8 @@
     <MESSAGE value="Save2" />
     <MESSAGE value="Removindo null points ." />
     <MESSAGE value="Refatorado segurancao e adicionado Usuario." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refatorado segurancao e adicionado Usuario." />
+    <MESSAGE value="Finalizado JWT e regras de negocios da autorizacao." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalizado JWT e regras de negocios da autorizacao." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
