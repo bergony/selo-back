@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ufrn.br.web.model.Telefone;
 import ufrn.br.web.repositoreis.TelefoneRepository;
 
+@Service
 public class TelefoneService {
 	
 	@Autowired
