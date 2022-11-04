@@ -1,6 +1,7 @@
 package ufrn.br.web.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,7 @@ import ufrn.br.web.model.Telefone;
 import ufrn.br.web.services.TelefoneService;
 
 @RestController
-@RequestMapping("/api/Telefones")
+@RequestMapping("/api/telefones")
 @RequiredArgsConstructor
 public class TelefoneController {
 
@@ -27,8 +28,12 @@ public class TelefoneController {
 		return telefoneService.cadastrarTelefone(telefone);
 	}
 	@GetMapping ("{id}")
-	public Telefone buscarPorId (@PathVariable Integer id) {
-		return telefoneService.buscarPorId(id).get();
+	public ResponseEntity buscarPorId (@PathVariable Integer id) {
+		Telefone telefone = telefoneService.buscarPorId(id).get();
+		if (telefone != null) {
+			return ResponseEntity.ok().body(telefone);
+		}
+		return (ResponseEntity) ResponseEntity.notFound();
 	}
 	@PutMapping ("{id}")
 	public Telefone editarTelefone (@PathVariable Integer id, @RequestBody Telefone telefone) {

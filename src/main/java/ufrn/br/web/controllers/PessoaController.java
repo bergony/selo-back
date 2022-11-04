@@ -22,9 +22,10 @@ import java.util.Stack;
 @RequiredArgsConstructor
 public class PessoaController {
 
-/*
 
-    private PessoaService pessoaService;*/
+
+	@Autowired
+    private PessoaService pessoaService;
 
     @Autowired
     private PessoaRepository pessoaRepository;
@@ -41,7 +42,13 @@ public class PessoaController {
         return pessoaRepository.findAll(example);
     }
 
+    @GetMapping ("{id}")
+    public Pessoa findById (@PathVariable Integer id) {
+    	return pessoaService.findPessoalByID(id);
+    }
+    
 
+    
    /* @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public String salvarPessoa(Model model, @ModelAttribute Pessoa pessoa) {
         Pessoa user = pessoaService.savePessoa(pessoa);
