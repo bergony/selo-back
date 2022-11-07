@@ -24,7 +24,10 @@ public class TelefoneService {
 	
 	public Telefone buscarPorId (Integer id) {
 		Optional <Telefone> telefone = telefoneRepository.findById(id);
-		return telefone.get();
+		if (telefone.isPresent()) {
+			return telefone.get();
+		}
+		return null;
 	}
 	
 	public Telefone delete (Integer id) {
@@ -50,7 +53,7 @@ public class TelefoneService {
 		
 	} 
 	
-	public List<Telefone> buscarPorPessoa (Long id) throws Exception {
+	public List<Telefone> buscarPorPessoa (Integer id) throws Exception {
 		List <Telefone> telefones = telefoneRepository.findByPessoa(id);
 		if (telefones.isEmpty()) {
 			throw new Exception ("Não há telefone para o usuário com id: " + id + " !!");

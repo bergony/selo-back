@@ -31,12 +31,12 @@ public class TelefoneController {
 	}
 	
 	@GetMapping ("{id}")
-	public Telefone buscarPorId (@PathVariable Integer id) {
+	public ResponseEntity<Telefone> buscarPorId (@PathVariable Integer id) {
 		Telefone telefone = telefoneService.buscarPorId(id);
 		if (telefone != null) {
-			return telefone;
+			return ResponseEntity.ok(telefone);
 		}
-		return null;
+		return ResponseEntity.notFound().build();
 	}
 	@PutMapping ("{id}")
 	public Telefone editarTelefone (@PathVariable Integer id, @RequestBody Telefone telefone) {
@@ -48,7 +48,7 @@ public class TelefoneController {
 		return telefoneService.delete(id);
 	}
 	@GetMapping ("pessoa/{id}")
-	public List<Telefone> buscarPorPessoa (@PathVariable Long id) throws Exception {
+	public List<Telefone> buscarPorPessoa (@PathVariable Integer id) throws Exception {
 		return telefoneService.buscarPorPessoa(id);
 	}
 }

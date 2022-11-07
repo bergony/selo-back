@@ -11,6 +11,6 @@ import ufrn.br.web.model.Telefone;
 @Repository
 public interface TelefoneRepository extends JpaRepository<Telefone, Integer> {
 	
-	List <Telefone> findByPessoa (Long id);
+	List <Telefone> findByPessoa (Integer id);
 
 }
