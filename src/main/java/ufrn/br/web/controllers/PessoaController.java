@@ -110,5 +110,22 @@ public class PessoaController {
 
         return "configuracao";
     }*/
-
+/*
+ {
+    "id": null,
+    "login": null,
+    "senha": null,
+    "role": null,
+    "dataNascimento": null,
+    "cpf": null,
+    "nomeCompleto": null,
+    "username": null,
+    "email": "teste",
+    "password": null,
+    "telefone": null,
+    "endereco": null,
+    "livros": null,
+    "emprestimos": null
+}
+ * */
 }

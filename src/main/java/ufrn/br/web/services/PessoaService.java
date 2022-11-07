@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import ufrn.br.web.model.Pessoa;
+import ufrn.br.web.repositoreis.EmprestimoRepository;
 import ufrn.br.web.repositoreis.EnderocoRepository;
 import ufrn.br.web.repositoreis.PessoaRepository;
 import ufrn.br.web.repositoreis.TelefoneRepository;
@@ -25,6 +26,9 @@ public class PessoaService {
     @Autowired
     private TelefoneRepository telefoneRepository;
 
+    @Autowired
+    private EmprestimoRepository emprestimoRepository;
+    
     public Pessoa findPessoalByID(Integer id) {
         return pessoaRepository.findById(id).orElse(null);
     }
@@ -99,6 +103,10 @@ public class PessoaService {
     	}
     	return null;
     }
+    
+//    public Pessoa buscarPorEmprestimo () {
+//    	
+//    }
 //    public Pessoa buscarPorId (Integer id) {
 //    	Optional <Pessoa> atualPessoa = pessoaRepository.findById(id);
 //    	if (atualPessoa.isPresent()) {
