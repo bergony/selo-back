@@ -16,8 +16,8 @@ public class TelefoneService {
 	private TelefoneRepository telefoneRepository;
 	
 	public Telefone cadastrarTelefone (Telefone telefone) throws Exception {
-		if (telefone.getNumero() == null) {
-			throw new Exception("ERRO! Número está vazio!");
+		if (telefone.getNumero() == null || telefone.getNumero().length() <= 9) {
+			throw new Exception("ERRO! Número está vazio! ou está faltando o 9/ddd");
 		}
 		return telefoneRepository.save(telefone);
 	}

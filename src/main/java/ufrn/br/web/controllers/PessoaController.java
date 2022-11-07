@@ -52,6 +52,10 @@ public class PessoaController {
     	return pessoaService.savePessoa(pessoa);
     }
 
+    @PutMapping ("{id}")
+    public Pessoa editarPessoa (@PathVariable Integer id, @RequestBody Pessoa pessoa) {
+    	return pessoaService.editarPessoa(id, pessoa);
+    }
     
    /* @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public String salvarPessoa(Model model, @ModelAttribute Pessoa pessoa) {
