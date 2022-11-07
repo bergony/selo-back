@@ -57,6 +57,10 @@ public class PessoaController {
     	return pessoaService.editarPessoa(id, pessoa);
     }
     
+    public Pessoa deletarPessoa (@PathVariable Integer id) {
+    	return pessoaService.deletarPessoa(id);
+    }
+    
    /* @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public String salvarPessoa(Model model, @ModelAttribute Pessoa pessoa) {
         Pessoa user = pessoaService.savePessoa(pessoa);

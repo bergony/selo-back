@@ -104,8 +104,22 @@ public class PessoaService {
     	return null;
     }
     
-//    public Pessoa buscarPorEmprestimo () {
-//    	
+    public Pessoa deletarPessoa (Integer id) {
+    	Pessoa pessoa = findPessoalByID(id);
+    	if (pessoa != null) {
+    		pessoaRepository.delete(pessoa);
+    		return pessoa;
+    	}
+    	return null; 
+    }
+    
+    
+    
+//    public Pessoa buscarPorEmprestimos (Integer id) {
+//    	Pessoa p = findPessoalByID(id);
+//    	if (p != null) {
+//    		return emprestimoRepository.findAllByPessoa(p.getNomeCompleto());
+//    	}
 //    }
 //    public Pessoa buscarPorId (Integer id) {
 //    	Optional <Pessoa> atualPessoa = pessoaRepository.findById(id);
