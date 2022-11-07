@@ -1,5 +1,7 @@
 package ufrn.br.web.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,13 +29,14 @@ public class TelefoneController {
 	public Telefone cadastrar (@RequestBody Telefone telefone) throws Exception {
 		return telefoneService.cadastrarTelefone(telefone);
 	}
+	
 	@GetMapping ("{id}")
-	public ResponseEntity buscarPorId (@PathVariable Integer id) {
-		Telefone telefone = telefoneService.buscarPorId(id).get();
+	public Telefone buscarPorId (@PathVariable Integer id) {
+		Telefone telefone = telefoneService.buscarPorId(id);
 		if (telefone != null) {
-			return ResponseEntity.ok().body(telefone);
+			return telefone;
 		}
-		return (ResponseEntity) ResponseEntity.notFound();
+		return null;
 	}
 	@PutMapping ("{id}")
 	public Telefone editarTelefone (@PathVariable Integer id, @RequestBody Telefone telefone) {
@@ -43,5 +46,9 @@ public class TelefoneController {
 	@DeleteMapping 
 	public Telefone delete (@PathVariable Integer id) {
 		return telefoneService.delete(id);
+	}
+	@GetMapping ("pessoa/{id}")
+	public List<Telefone> buscarPorPessoa (@PathVariable Long id) throws Exception {
+		return telefoneService.buscarPorPessoa(id);
 	}
 }

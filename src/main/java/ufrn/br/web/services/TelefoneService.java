@@ -22,9 +22,9 @@ public class TelefoneService {
 		return telefoneRepository.save(telefone);
 	}
 	
-	public Optional <Telefone> buscarPorId (Integer id) {
+	public Telefone buscarPorId (Integer id) {
 		Optional <Telefone> telefone = telefoneRepository.findById(id);
-		return telefone;
+		return telefone.get();
 	}
 	
 	public Telefone delete (Integer id) {
@@ -38,7 +38,7 @@ public class TelefoneService {
 	
 	public Telefone editTelefone (Integer id, Telefone telefone) {
 		
-		Telefone oldTelefone = buscarPorId(id).get();
+		Telefone oldTelefone = buscarPorId(id);
 		if (oldTelefone == null) {
 			return null;
 		}
@@ -50,7 +50,7 @@ public class TelefoneService {
 		
 	} 
 	
-	public List<Telefone> buscarPorPessoa (Integer id) throws Exception {
+	public List<Telefone> buscarPorPessoa (Long id) throws Exception {
 		List <Telefone> telefones = telefoneRepository.findByPessoa(id);
 		if (telefones.isEmpty()) {
 			throw new Exception ("Não há telefone para o usuário com id: " + id + " !!");

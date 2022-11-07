@@ -47,6 +47,10 @@ public class PessoaController {
     	return pessoaService.findPessoalByID(id);
     }
     
+    @PostMapping()
+    public Pessoa cadastrarPessoa (@RequestBody Pessoa pessoa) {
+    	return pessoaService.savePessoa(pessoa);
+    }
 
     
    /* @RequestMapping(value = "/salvar", method = RequestMethod.POST)

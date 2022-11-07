@@ -12,7 +12,7 @@ public class Telefone implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    private Integer id;
 
     private String numero;
 
