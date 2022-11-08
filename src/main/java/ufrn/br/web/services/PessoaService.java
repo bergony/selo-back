@@ -1,16 +1,20 @@
 package ufrn.br.web.services;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+
 import ufrn.br.web.model.Pessoa;
+import ufrn.br.web.repositoreis.EmprestimoRepository;
 import ufrn.br.web.repositoreis.EnderocoRepository;
 import ufrn.br.web.repositoreis.PessoaRepository;
 import ufrn.br.web.repositoreis.TelefoneRepository;
-
-import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class PessoaService {
@@ -22,6 +26,9 @@ public class PessoaService {
     @Autowired
     private TelefoneRepository telefoneRepository;
 
+    @Autowired
+    private EmprestimoRepository emprestimoRepository;
+    
     public Pessoa findPessoalByID(Integer id) {
         return pessoaRepository.findById(id).orElse(null);
     }
@@ -88,4 +95,37 @@ public class PessoaService {
         pessoaRepository.delete(pessoa);
         return false;
     }
+    public Pessoa editarPessoa  (Integer id, Pessoa pessoa) {
+    	Pessoa atual = findPessoalByID(id);
+    	if (atual != null) {
+    		atual = pessoa;
+    		pessoaRepository.save(atual);
+    	}
+    	return null;
+    }
+    
+    public Pessoa deletarPessoa (Integer id) {
+    	Pessoa pessoa = findPessoalByID(id);
+    	if (pessoa != null) {
+    		pessoaRepository.delete(pessoa);
+    		return pessoa;
+    	}
+    	return null; 
+    }
+    
+    
+    
+//    public Pessoa buscarPorEmprestimos (Integer id) {
+//    	Pessoa p = findPessoalByID(id);
+//    	if (p != null) {
+//    		return emprestimoRepository.findAllByPessoa(p.getNomeCompleto());
+//    	}
+//    }
+//    public Pessoa buscarPorId (Integer id) {
+//    	Optional <Pessoa> atualPessoa = pessoaRepository.findById(id);
+//    	if (atualPessoa.isPresent()) {
+//    		return atualPessoa.get();
+//    	}
+//    	return null;
+//    }
 }

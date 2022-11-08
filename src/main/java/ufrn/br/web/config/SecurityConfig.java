@@ -44,6 +44,8 @@ public class SecurityConfig {
                                         .hasAnyRole("ADMIN")
                                         .antMatchers(HttpMethod.GET, "/api/livros/**")
                                              .hasAnyRole("ADMIN", "USER", "MODERADOR")
+                                        .antMatchers(HttpMethod.GET, "/api/telefones/**")
+                                             .hasAnyRole("ADMIN", "USER", "MODERADOR")
                                         .antMatchers(HttpMethod.POST, "/api/emprestimos/**")
                                             .hasAnyRole("ADMIN", "USER", "MODERADOR")
                                         .antMatchers(HttpMethod.POST, "/api/usuarios/**")

@@ -22,9 +22,10 @@ import java.util.Stack;
 @RequiredArgsConstructor
 public class PessoaController {
 
-/*
 
-    private PessoaService pessoaService;*/
+
+	@Autowired
+    private PessoaService pessoaService;
 
     @Autowired
     private PessoaRepository pessoaRepository;
@@ -41,7 +42,25 @@ public class PessoaController {
         return pessoaRepository.findAll(example);
     }
 
+    @GetMapping ("{id}")
+    public Pessoa findById (@PathVariable Integer id) {
+    	return pessoaService.findPessoalByID(id);
+    }
+    
+    @PostMapping()
+    public Pessoa cadastrarPessoa (@RequestBody Pessoa pessoa) {
+    	return pessoaService.savePessoa(pessoa);
+    }
 
+    @PutMapping ("{id}")
+    public Pessoa editarPessoa (@PathVariable Integer id, @RequestBody Pessoa pessoa) {
+    	return pessoaService.editarPessoa(id, pessoa);
+    }
+    
+    public Pessoa deletarPessoa (@PathVariable Integer id) {
+    	return pessoaService.deletarPessoa(id);
+    }
+    
    /* @RequestMapping(value = "/salvar", method = RequestMethod.POST)
     public String salvarPessoa(Model model, @ModelAttribute Pessoa pessoa) {
         Pessoa user = pessoaService.savePessoa(pessoa);
@@ -95,5 +114,22 @@ public class PessoaController {
 
         return "configuracao";
     }*/
-
+/*
+ {
+    "id": null,
+    "login": null,
+    "senha": null,
+    "role": null,
+    "dataNascimento": null,
+    "cpf": null,
+    "nomeCompleto": null,
+    "username": null,
+    "email": "teste",
+    "password": null,
+    "telefone": null,
+    "endereco": null,
+    "livros": null,
+    "emprestimos": null
+}
+ * */
 }
