@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import ufrn.br.web.model.Telefone;
 
 @Repository
-public interface TelefoneRepository extends JpaRepository<Telefone, Integer> {
+public interface TelefoneRepository extends JpaRepository<Telefone, Long> {
 
 }

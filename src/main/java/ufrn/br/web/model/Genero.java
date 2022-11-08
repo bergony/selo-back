@@ -1,5 +1,7 @@
 package ufrn.br.web.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 import lombok.ToString;
@@ -12,7 +14,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ToString
-public class Genero {
+public class Genero implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 
 	@javax.persistence.Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
