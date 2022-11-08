@@ -12,7 +12,7 @@ import ufrn.br.web.security.JwtAuthFilter;
 import ufrn.br.web.security.JwtService;
 import ufrn.br.web.services.UsuarioService;
 
-@EnableWebSecurity //configuracao de segurança
+@EnableWebSecurity 
 public class SecurityConfig {
 
     private final JwtService jwtService;
@@ -32,27 +32,24 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable() //seguranca entre aplicavao web e api,aqui nossa api é rest
+                .csrf().disable() 
                 .authorizeHttpRequests((authz) -> {
                             try {
                                 authz
-                                        .antMatchers("/api/pessoas/**")
-                                            .hasAnyRole("ADMIN")
-                                        .antMatchers(HttpMethod.GET, "/api/emprestimos/**")
-                                            .hasAnyRole("ADMIN", "USER", "MODERADOR")
-                                        .antMatchers(HttpMethod.POST, "/api/livros/**")
-                                        .hasAnyRole("ADMIN")
-                                        .antMatchers(HttpMethod.GET, "/api/livros/**")
-                                             .hasAnyRole("ADMIN", "USER", "MODERADOR")
-                                        .antMatchers(HttpMethod.POST, "/api/emprestimos/**")
-                                            .hasAnyRole("ADMIN", "USER", "MODERADOR")
+                                        .antMatchers("/api/pessoas/**").hasAnyRole("ADMIN")
+                                        .antMatchers(HttpMethod.GET, "/api/emprestimos/**").hasAnyRole("ADMIN", "USER", "MODERADOR")
+                                        .antMatchers(HttpMethod.POST, "/api/livros/**").hasAnyRole("ADMIN")
+                                        .antMatchers(HttpMethod.GET, "/api/livros/**").hasAnyRole("ADMIN", "USER", "MODERADOR")
+                                        .antMatchers(HttpMethod.GET, "/api/endereco/**").hasAnyRole("ADMIN", "USER", "MODERADOR")
+                                        .antMatchers(HttpMethod.POST, "/api/endereco/**").hasAnyRole("ADMIN", "USER", "MODERADOR")
+                                        .antMatchers(HttpMethod.POST, "/api/emprestimos/**").hasAnyRole("ADMIN", "USER", "MODERADOR")
                                         .antMatchers(HttpMethod.POST, "/api/usuarios/**")
                                             .permitAll()
                                             .anyRequest().authenticated()
                                         .and()
                                         .sessionManagement()
                                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //sessões sem usuários - TODA REQUISICAO PRECISA DO TOKEN
-                                        .and() //volta a raiz
+                                        .and() 
                                         .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
                             } catch (Exception e) {
                                 e.printStackTrace();

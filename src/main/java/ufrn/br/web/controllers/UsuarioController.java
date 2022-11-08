@@ -29,7 +29,7 @@ public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
-    private final UsuarioRepository usuarioRepository;
+    //private final UsuarioRepository usuarioRepository;
 
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
