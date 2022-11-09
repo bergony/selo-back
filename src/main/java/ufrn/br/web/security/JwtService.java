@@ -86,21 +86,6 @@ public class JwtService {
     public static void main(String[] args) {
 
 
-        ConfigurableApplicationContext contexto = SpringApplication.run(WebApplication.class);
-        JwtService service = contexto.getBean(JwtService.class);
-        Usuario usuario = Usuario.builder().login("fulano").build();
-        System.out.println("Gerando token");
-        String token = service.gerarToken(usuario);
-        System.out.println(token);
-
-        System.out.println("Verifica se o token é válido");
-        boolean isTokenValido = service.tokenValido(token);
-        System.out.println("O token é válido? " + isTokenValido);
-
-        System.out.println("Obtenha o login do usuário");
-        String login = service.obterLoginUsuario(token);
-        System.out.println(login);
-
 
     }
 }
