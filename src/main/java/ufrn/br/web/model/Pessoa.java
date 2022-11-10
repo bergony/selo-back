@@ -49,5 +49,10 @@ public class Pessoa extends Usuario {
     @OneToMany(mappedBy="pessoa")
     private List<Emprestimo> emprestimos;
 
+	public Pessoa() {
+		
+	}
+
+    
 
 }

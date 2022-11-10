@@ -35,4 +35,7 @@ public class EnderecoService {
 		}		
 		return null;
 	}
+	public List <Endereco> findAll () {
+		return enderecoRepository.findAll();
+	}
 }
