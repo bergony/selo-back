@@ -53,13 +53,17 @@ public class TelefoneService {
 		
 	} 
 	
-	public List<Telefone> buscarPorPessoa (Integer id) throws Exception {
-		List <Telefone> telefones = telefoneRepository.findByPessoa(id);
-		if (telefones.isEmpty()) {
-			throw new Exception ("Não há telefone para o usuário com id: " + id + " !!");
-		}
-		return telefones; 
+	public List<Telefone> findAll () {
+		return telefoneRepository.findAll();
 	}
+	
+//	public List<Telefone> buscarPorPessoa (Integer id) throws Exception {
+//		List <Telefone> telefones = telefoneRepository.findByPessoa(id);
+//		if (telefones.isEmpty()) {
+//			throw new Exception ("Não há telefone para o usuário com id: " + id + " !!");
+//		}
+//		return telefones; 
+//	}
 	
 	
 	

@@ -17,7 +17,6 @@ public class PessoaDTO {
     private String nomeCompleto; 
     private String username;
     private String email;
-    private String password;
     private Telefone telefonePessoa;
     private Endereco enderecoPessoa;
 
