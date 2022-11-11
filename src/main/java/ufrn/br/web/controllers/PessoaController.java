@@ -1,21 +1,29 @@
 package ufrn.br.web.controllers;
 
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import lombok.RequiredArgsConstructor;
+import ufrn.br.web.dto.PessoaDTO;
 import ufrn.br.web.model.Pessoa;
-import ufrn.br.web.repositoreis.EmprestimoRepository;
-import ufrn.br.web.repositoreis.LivroRepository;
 import ufrn.br.web.repositoreis.PessoaRepository;
 import ufrn.br.web.services.PessoaService;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
 
 @RestController
 @RequestMapping("/api/pessoas")
@@ -29,25 +37,33 @@ public class PessoaController {
 
     @Autowired
     private PessoaRepository pessoaRepository;
+    
+    @Autowired
+    private ModelMapper modelMapper;
 
-    @GetMapping
-    public List<Pessoa> find(Pessoa filtro ){
-        ExampleMatcher matcher = ExampleMatcher
-                .matching()
-                .withIgnoreCase()
-                .withStringMatcher(
-                        ExampleMatcher.StringMatcher.CONTAINING );
-
-        Example example = Example.of(filtro, matcher);
-        return pessoaRepository.findAll(example);
-    }
+//    @GetMapping
+//    public List<Pessoa> find(Pessoa filtro ){
+//        ExampleMatcher matcher = ExampleMatcher
+//                .matching()
+//                .withIgnoreCase()
+//                .withStringMatcher(
+//                        ExampleMatcher.StringMatcher.CONTAINING );
+//
+//        Example example = Example.of(filtro, matcher);
+//        return pessoaRepository.findAll(example);
+//    }
 
     @GetMapping ("{id}")
-    public Pessoa findById (@PathVariable Integer id) {
-    	return pessoaService.findPessoalByID(id);
+    public ResponseEntity<Pessoa> findById (@PathVariable Integer id) {
+    	Pessoa p = pessoaService.findPessoalByID(id);
+    	if (p != null) {
+    		return ResponseEntity.ok(p);
+    	}
+    	return ResponseEntity.notFound().build();
     }
     
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public Pessoa cadastrarPessoa (@RequestBody Pessoa pessoa) {
     	return pessoaService.savePessoa(pessoa);
     }
@@ -57,8 +73,20 @@ public class PessoaController {
     	return pessoaService.editarPessoa(id, pessoa);
     }
     
+    @DeleteMapping
     public Pessoa deletarPessoa (@PathVariable Integer id) {
     	return pessoaService.deletarPessoa(id);
+    }
+    @GetMapping
+    public List<PessoaDTO> listarPessoas () {
+    	return pessoaService.findAll()
+    			.stream()
+    			.map(this::toPessoaDto)
+    			.collect(Collectors.toList());
+    }
+    
+    public PessoaDTO toPessoaDto (Pessoa pessoa) {
+    	return modelMapper.map(pessoa, PessoaDTO.class);
     }
     
    /* @RequestMapping(value = "/salvar", method = RequestMethod.POST)

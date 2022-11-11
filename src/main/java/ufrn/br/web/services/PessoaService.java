@@ -82,19 +82,19 @@ public class PessoaService {
        return pessoaRepository.findByUserNameAndPassword(pessoa.getUsername());
 
     }
-    public boolean remover(Model model, Pessoa pessoa) {
-        List<String> erros = new ArrayList<>();
-
-        if(!pessoa.getEmprestimos().isEmpty()){
-            erros.add(" não é possivel deletar "+ pessoa.getUsername()+" com emprestimos associados .");
-            model.addAttribute("erros", erros);
-            return false;
-        }
-        erros.add("removido com sucesso");
-        model.addAttribute("sucessos", erros);
-        pessoaRepository.delete(pessoa);
-        return false;
-    }
+//    public boolean remover(Model model, Pessoa pessoa) {
+//        List<String> erros = new ArrayList<>();
+//
+//        if(!pessoa.getEmprestimos().isEmpty()){
+//            erros.add(" não é possivel deletar "+ pessoa.getUsername()+" com emprestimos associados .");
+//            model.addAttribute("erros", erros);
+//            return false;
+//        }
+//        erros.add("removido com sucesso");
+//        model.addAttribute("sucessos", erros);
+//        pessoaRepository.delete(pessoa);
+//        return false;
+//    }
     public Pessoa editarPessoa  (Integer id, Pessoa pessoa) {
     	Pessoa atual = findPessoalByID(id);
     	if (atual != null) {

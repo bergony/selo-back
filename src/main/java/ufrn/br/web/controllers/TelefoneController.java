@@ -1,7 +1,9 @@
 package ufrn.br.web.controllers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,7 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import lombok.RequiredArgsConstructor;
+import ufrn.br.web.dto.PessoaDTO;
+import ufrn.br.web.dto.TelefoneDTO;
 import ufrn.br.web.model.Telefone;
 import ufrn.br.web.services.TelefoneService;
 
@@ -23,6 +28,9 @@ public class TelefoneController {
 
 	@Autowired
 	private TelefoneService telefoneService;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 	
 	
 	@PostMapping
@@ -47,8 +55,15 @@ public class TelefoneController {
 	public Telefone delete (@PathVariable Integer id) {
 		return telefoneService.delete(id);
 	}
-	@GetMapping ("pessoa/{id}")
-	public List<Telefone> buscarPorPessoa (@PathVariable Integer id) throws Exception {
-		return telefoneService.buscarPorPessoa(id);
-	}
+    @GetMapping
+    public List<TelefoneDTO> listarTelefones () {
+    	return telefoneService.findAll()
+    			.stream()
+    			.map(this::toTelefoneDto)
+    			.collect(Collectors.toList());
+    }
+    
+    public TelefoneDTO toTelefoneDto (Telefone telefone) {
+    	return modelMapper.map(telefone, TelefoneDTO.class);
+    }
 }
