@@ -49,12 +49,16 @@ public class SecurityConfig {
                                         .hasAnyRole("ADMIN", "USER", "MODERADOR")
                                         .antMatchers(HttpMethod.POST, "/api/usuarios/**")
                                             .permitAll()
-                                            .anyRequest().authenticated()
+                                        .antMatchers(HttpMethod.GET, "/v3/api-docs/**")
+                                        .permitAll()
+                                        .antMatchers(HttpMethod.GET, "/swagger-ui/**")
+                                        .permitAll()
+                                        .anyRequest().authenticated()
                                         .and()
                                         .sessionManagement()
                                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //sessões sem usuários - TODA REQUISICAO PRECISA DO TOKEN
-                                        .and()
-                                        .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
+                                        .and() //volta a raiz
+                                        .addFilterBefore( jwtFilter(), UsernamePasswordAuthenticationFilter.class);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
