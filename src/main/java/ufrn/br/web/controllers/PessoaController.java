@@ -3,6 +3,7 @@ package ufrn.br.web.controllers;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import io.swagger.v3.oas.annotations.Operation;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -56,6 +57,7 @@ public class PessoaController {
     @GetMapping ("{id}")
     public ResponseEntity<Pessoa> findById (@PathVariable Integer id) {
     	Pessoa p = pessoaService.findPessoalByID(id);
+
     	if (p != null) {
     		return ResponseEntity.ok(p);
     	}
@@ -64,8 +66,10 @@ public class PessoaController {
     
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public Pessoa cadastrarPessoa (@RequestBody Pessoa pessoa) {
-    	return pessoaService.savePessoa(pessoa);
+    @Operation(summary = "Cadastrar Pessoas",
+            description = "Cadastrar a pessoas")
+    public PessoaDTO cadastrarPessoa (@RequestBody Pessoa pessoa) {
+    	return toPessoaDto( pessoaService.savePessoa(pessoa));
     }
 
     @PutMapping ("{id}")
@@ -78,6 +82,8 @@ public class PessoaController {
     	return pessoaService.deletarPessoa(id);
     }
     @GetMapping
+    @Operation(summary = "Listar Pessoas",
+            description = "Listar todas as pessoas")
     public List<PessoaDTO> listarPessoas () {
     	return pessoaService.findAll()
     			.stream()

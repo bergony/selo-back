@@ -10,3 +10,5 @@ values(1, 'ADMIN'),
 (2, 'MODERADOR'),
 (3, 'USER');
 ````
+# Swaggger
+http://localhost:8080/swagger-ui/index.html
