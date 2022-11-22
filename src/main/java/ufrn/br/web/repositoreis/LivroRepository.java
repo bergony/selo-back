@@ -12,14 +12,14 @@ import java.util.List;
 
 
 @Repository
-public interface LivroRepository extends JpaRepository<Livro, Long> {
+public interface LivroRepository extends JpaRepository<Livro, Integer> {
 
     @Query("select l from Livro l where l.pessoa.username = :username")
     List<Livro> findAllByUserName(@Param("username") String username);
 
 
     @Query("select l from Livro l where l.emprestimo.id = :id")
-    Livro findByEmprestimoAtivo(@Param("id") long id);
+    Livro findByEmprestimoAtivo(@Param("id") Integer id);
 
     List<Livro> findAllByEmprestimoNull();
 }

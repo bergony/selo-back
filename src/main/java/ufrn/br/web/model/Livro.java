@@ -1,13 +1,10 @@
 package ufrn.br.web.model;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "livro")
@@ -21,7 +18,7 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Long id;
+	private Integer id;
 
 	@Column(name = "edicao")
 	private String descricao;

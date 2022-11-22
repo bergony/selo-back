@@ -37,10 +37,8 @@ public class SecurityConfig {
                             try {
                                 authz
                                         .antMatchers("/api/pessoas/**").hasAnyRole("ADMIN")
-                                        .antMatchers(HttpMethod.GET, "/api/emprestimos/**").hasAnyRole("ADMIN", "USER", "MODERADOR")
-                                        .antMatchers(HttpMethod.POST, "/api/livros/**").hasAnyRole("ADMIN")
-                                        .antMatchers(HttpMethod.POST, "/api/genero**").hasAnyRole("ADMIN")
-                                        .antMatchers(HttpMethod.GET, "/api/livros/**").hasAnyRole("ADMIN", "USER", "MODERADOR")
+                                        .antMatchers(HttpMethod.GET, "/api/emprestimos/**").hasAnyRole("ADMIN", "USER", "MODERADOR")                                        
+                                        .antMatchers(HttpMethod.POST, "/api/genero**").hasAnyRole("ADMIN")                                        
                                         .antMatchers(HttpMethod.GET, "/api/genero**").hasAnyRole("ADMIN", "USER", "MODERADOR")
                                         .antMatchers(HttpMethod.GET, "/api/endereco/**").hasAnyRole("ADMIN", "USER", "MODERADOR")
                                         .antMatchers(HttpMethod.POST, "/api/endereco/**").hasAnyRole("ADMIN", "USER", "MODERADOR")
@@ -50,6 +48,10 @@ public class SecurityConfig {
                                         .antMatchers(HttpMethod.POST, "/api/usuarios/**")
                                             .permitAll()
                                         .antMatchers(HttpMethod.GET, "/v3/api-docs/**")
+                                        .permitAll()
+                                        .antMatchers(HttpMethod.POST, "/api/livros/**")
+                                        .permitAll()
+                                        .antMatchers(HttpMethod.GET, "/api/livros/**")
                                         .permitAll()
                                         .antMatchers(HttpMethod.GET, "/swagger-ui/**")
                                         .permitAll()
