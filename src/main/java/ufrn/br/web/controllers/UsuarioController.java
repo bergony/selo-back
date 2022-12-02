@@ -21,7 +21,7 @@ import ufrn.br.web.services.UsuarioService;
 
 import javax.validation.Valid;
 import java.util.List;
-
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/api/usuarios")
 @RequiredArgsConstructor
@@ -34,6 +34,7 @@ public class UsuarioController {
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
 
+    @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "Requestor-Type")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario salvar(@RequestBody @Valid Pessoa pessoa ){
