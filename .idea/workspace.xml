@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec86a937-2629-487a-9810-5e418f5ce407" name="Changes" comment="Adicioando swagger e profiles no projeto.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/UsuarioDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-preprod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-preprod.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/PessoaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/PessoaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/model/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/LivroRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/LivroRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/PessoaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/PessoaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/UsuarioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/UsuarioController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Pessoa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/model/Pessoa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/LivroRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/LivroRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/PessoaRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/repositoreis/PessoaRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/PessoaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/PessoaService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/UsuarioService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +189,8 @@
       <workItem from="1669804534123" duration="2453000" />
       <workItem from="1669892278854" duration="2449000" />
       <workItem from="1669903088902" duration="248000" />
-      <workItem from="1669975888907" duration="2853000" />
+      <workItem from="1669975888907" duration="2983000" />
+      <workItem from="1670069317758" duration="8134000" />
     </task>
     <task id="LOCAL-00001" summary="Teste Commit">
       <created>1651681901537</created>
@@ -275,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668280286951</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Adicioando swagger e profiles no projeto.">
+      <created>1669984628262</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1669984628262</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,8 +504,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java</url>
-          <line>41</line>
+          <line>48</line>
           <option name="timeStamp" value="312" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="313" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="314" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/UsuarioController.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="315" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

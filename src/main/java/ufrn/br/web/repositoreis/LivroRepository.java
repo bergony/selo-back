@@ -14,8 +14,8 @@ import java.util.List;
 @Repository
 public interface LivroRepository extends JpaRepository<Livro, Long> {
 
-    @Query("select l from Livro l where l.pessoa.username = :username")
-    List<Livro> findAllByUserName(@Param("username") String username);
+    @Query("select l from Livro l where l.pessoa.nomeCompleto = :nomeCompleto")
+    List<Livro> findAllByUserName(@Param("nomeCompleto") String nomeCompleto);
 
 
     @Query("select l from Livro l where l.emprestimo.id = :id")

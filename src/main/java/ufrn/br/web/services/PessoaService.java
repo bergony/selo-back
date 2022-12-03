@@ -49,7 +49,7 @@ public class PessoaService {
     @Transactional
     public Pessoa savePessoa(Pessoa pessoa) {
 
-        Pessoa pessoaJaCadstrada = pessoaRepository.findByUserNameAndPassword(pessoa.getUsername());
+        Pessoa pessoaJaCadstrada = pessoaRepository.findByUserNameAndPassword(pessoa.getNomeCompleto());
 
         if(pessoaJaCadstrada != null && pessoa.getId() == null)
             return null;
@@ -59,14 +59,14 @@ public class PessoaService {
 
     public boolean autenticarPessoa(Model model, Pessoa pessoa) {
         List<String> erros = new ArrayList<>();
-        Pessoa pessoaValidar = pessoaRepository.findByUserNameAndPassword(pessoa.getUsername());
+        Pessoa pessoaValidar = pessoaRepository.findByUserNameAndPassword(pessoa.getNomeCompleto());
 
         if(pessoaValidar == null){
             erros.add("Usuario Invalido");
             model.addAttribute("erros", erros);
             return true;
         }
-        if(!pessoa.getPassword().equals(pessoaValidar.getPassword())){
+        if(!pessoa.getSenha().equals(pessoaValidar.getSenha())){
             erros.add("Senha Invalido");
         }
 
@@ -79,7 +79,7 @@ public class PessoaService {
     }
 
     public Pessoa fetchPessoa( Pessoa pessoa) {
-       return pessoaRepository.findByUserNameAndPassword(pessoa.getUsername());
+       return pessoaRepository.findByUserNameAndPassword(pessoa.getNomeCompleto());
 
     }
 //    public boolean remover(Model model, Pessoa pessoa) {

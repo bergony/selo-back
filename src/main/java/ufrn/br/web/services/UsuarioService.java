@@ -27,7 +27,7 @@ public class UsuarioService implements UserDetailsService {
     @Transactional
     public Usuario salvar(Usuario usuario) {
         Pessoa pessoa = (Pessoa) usuario;
-        pessoa.setUsername(usuario.getLogin());
+        pessoa.setNomeCompleto(usuario.getLogin());
         return repository.save(pessoa);
     }
 

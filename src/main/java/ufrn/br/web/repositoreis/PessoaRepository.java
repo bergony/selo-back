@@ -14,8 +14,8 @@ import ufrn.br.web.model.Pessoa;
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 
-    @Query("select p from Pessoa p where p.username = :username")
-    Pessoa findByUserNameAndPassword(@Param("username") String username);
+    @Query("select p from Pessoa p where p.nomeCompleto = :nomeCompleto")
+    Pessoa findByUserNameAndPassword(@Param("nomeCompleto") String nomeCompleto);
     
     //Pessoa findByEmprestimos ();
 }

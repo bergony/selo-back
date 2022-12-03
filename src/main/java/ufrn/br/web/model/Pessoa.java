@@ -1,10 +1,7 @@
 package ufrn.br.web.model;
 
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -30,12 +27,6 @@ public class Pessoa extends Usuario {
     @Column(nullable = false)
     private String cpf;
     private String nomeCompleto;
-
-    @Column(unique=true)
-    private String username;
-    private String email;
-    private String password;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "telefone_id", referencedColumnName = "id")
     private Telefone telefone;

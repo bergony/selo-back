@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ufrn.br.web.dto.CredenciaisDTO;
 import ufrn.br.web.dto.TokenDTO;
+import ufrn.br.web.dto.UsuarioDTO;
 import ufrn.br.web.exception.SenhaInvalidaException;
 import ufrn.br.web.model.Pessoa;
+import ufrn.br.web.model.Role;
 import ufrn.br.web.model.Usuario;
 import ufrn.br.web.repositoreis.UsuarioRepository;
 import ufrn.br.web.security.JwtService;
@@ -21,7 +23,6 @@ import ufrn.br.web.services.UsuarioService;
 
 import javax.validation.Valid;
 import java.util.List;
-@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/api/usuarios")
 @RequiredArgsConstructor
@@ -34,12 +35,18 @@ public class UsuarioController {
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
 
-    @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "Requestor-Type")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario salvar(@RequestBody @Valid Pessoa pessoa ){
+    public Usuario salvar(@RequestBody @Valid UsuarioDTO usuarioDTO ){
 
-        pessoa.setSenha(passwordEncoder.encode(pessoa.getSenha()));
+
+        Pessoa pessoa = new Pessoa();
+        pessoa.setCpf(usuarioDTO.getCpf());
+        pessoa.setRole(new Role(usuarioDTO.getRole()));
+        pessoa.setLogin(usuarioDTO.getLogin());
+        pessoa.setNomeCompleto(usuarioDTO.getNomeCompleto());
+
+        pessoa.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
 
         return usuarioService.salvar(pessoa);
     }
