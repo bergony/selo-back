@@ -1,33 +1,28 @@
 package ufrn.br.web.dto;
 
-import java.util.Date;
+import java.io.Serializable;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import ufrn.br.web.model.Livro;
-import ufrn.br.web.model.Pessoa;
-import ufrn.br.web.services.PessoaService;
+
+
 
 @Data
-@Builder
-public class LivroDTO {	
-    private String descricao;
-    private String titulo;
-    private Integer pessoaId;
-    private Date data = new Date();  
-    
-    @Autowired
-    private PessoaService pessoaService;    
-       
-    public Pessoa buscar(Integer id) {    	
-    	return pessoaService.findPessoalByID(id);
-    }
+@NoArgsConstructor
+public class LivroDTO implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 
-    public Livro transformarParaObjeto() {
-    	return new Livro(1, descricao, titulo, data, buscar(pessoaId), null);
-    }
-    
-    
+	private Integer id;
+	private String titulo;
+	
+	public LivroDTO(Livro obj) {
+		super();
+		this.id = obj.getId();
+		this.titulo = obj.getTitulo();
+	}
+	
+	
+	
 }

@@ -1,0 +1,17 @@
+package ufrn.br.web.exception;
+
+public class DataIntegrityViotationException extends RuntimeException {
+
+	private static final long serialVersionUID = 1L;
+
+	public DataIntegrityViotationException(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
+
+	public DataIntegrityViotationException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+}

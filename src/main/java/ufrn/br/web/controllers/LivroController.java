@@ -1,50 +1,73 @@
 package ufrn.br.web.controllers;
 
-import lombok.RequiredArgsConstructor;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import ufrn.br.web.dto.LivroDTO;
-import ufrn.br.web.model.Livro;
-import ufrn.br.web.model.Pessoa;
-import ufrn.br.web.model.Usuario;
-import ufrn.br.web.repositoreis.LivroRepository;
-import ufrn.br.web.services.EmprestimoService;
-import ufrn.br.web.services.LivroService;
-import ufrn.br.web.services.LoginService;
-import ufrn.br.web.services.PessoaService;
+import java.net.URI;
 
 import javax.validation.Valid;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import ufrn.br.web.model.Livro;
+import ufrn.br.web.services.LivroService;
 
 @RestController
 @RequestMapping("/api/livros")
-@RequiredArgsConstructor
-public class LivroController {
 
-   
-    private final PessoaService pessoaService;
+public class LivroController {   
+    
     @Autowired
-    private final LivroService livroService;
-    private final EmprestimoService emprestimoService;
-   
+    private LivroService livroService;
+ 
+    @PutMapping
+	public ResponseEntity<Livro> create(@RequestParam(value = "pessoa", defaultValue = "0") Integer id_pessoa,
+			@Valid @RequestBody Livro obj) {
+		Livro newObj = livroService.create(id_pessoa, obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("api/livros/{id}")
+				.buildAndExpand(newObj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+	}
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Livro> salvar(@RequestBody @Valid LivroDTO dto )  {
-    	Livro livro = livroService.salvar(dto.transformarParaObjeto());
-    	
-    	return new ResponseEntity<>(livro, HttpStatus.CREATED);
-    }
+	@RequestMapping(value = "/{id}")
+	public ResponseEntity<Livro> findByid(@PathVariable Integer id) {
+		Livro obj = livroService.findById(id);
+		return ResponseEntity.ok().body(obj);
+	}
+
+//	@PutMapping(value = "/{id}")
+//	public ResponseEntity<Livro> update(@PathVariable Integer id, @Valid @RequestBody Livro obj) {
+//		Livro newObj = livroService.update(id, obj);
+//		return ResponseEntity.ok().body(newObj);
+//	}
+
+//	@GetMapping
+//	public ResponseEntity<List<LivroDTO>> findAllBookByCategory(// localhost:8080/livros?categoria=1
+//			@RequestParam(value = "categoria", defaultValue = "0") Integer id_cat) {
+//		List<Livro> list = livroService.findAllByCategoriy(id_cat);
+//		List<LivroDTO> listDTO = list.stream().map(obj -> new LivroDTO(obj)).collect(Collectors.toList());
+//		return ResponseEntity.ok().body(listDTO);
+//	}
+
+//	@GetMapping(value = "/allbooks")
+//	public ResponseEntity<List<LivroDTO>> findAll() {
+//		List<Livro> list = livroService.findAll();
+//		List<LivroDTO> listDTO = list.stream().map(obj -> new LivroDTO(obj)).collect(Collectors.toList());
+//		return ResponseEntity.ok().body(listDTO);
+//	}
+
+//	@DeleteMapping(value = "/{id}")
+//	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+//		livroService.delete(id);
+//		return ResponseEntity.noContent().build();
+//
+//	}
+
 
    
 
