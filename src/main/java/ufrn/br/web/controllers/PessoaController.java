@@ -10,15 +10,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 import ufrn.br.web.dto.PessoaDTO;
@@ -42,18 +34,6 @@ public class PessoaController {
     @Autowired
     private ModelMapper modelMapper;
 
-//    @GetMapping
-//    public List<Pessoa> find(Pessoa filtro ){
-//        ExampleMatcher matcher = ExampleMatcher
-//                .matching()
-//                .withIgnoreCase()
-//                .withStringMatcher(
-//                        ExampleMatcher.StringMatcher.CONTAINING );
-//
-//        Example example = Example.of(filtro, matcher);
-//        return pessoaRepository.findAll(example);
-//    }
-
     @GetMapping ("{id}")
     public ResponseEntity<Pessoa> findById (@PathVariable Integer id) {
     	Pessoa p = pessoaService.findPessoalByID(id);
@@ -66,8 +46,6 @@ public class PessoaController {
     
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    @Operation(summary = "Cadastrar Pessoas",
-            description = "Cadastrar a pessoas")
     public PessoaDTO cadastrarPessoa (@RequestBody Pessoa pessoa) {
     	return toPessoaDto( pessoaService.savePessoa(pessoa));
     }
@@ -77,13 +55,11 @@ public class PessoaController {
     	return pessoaService.editarPessoa(id, pessoa);
     }
     
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public Pessoa deletarPessoa (@PathVariable Integer id) {
     	return pessoaService.deletarPessoa(id);
     }
     @GetMapping
-    @Operation(summary = "Listar Pessoas",
-            description = "Listar todas as pessoas")
     public List<PessoaDTO> listarPessoas () {
     	return pessoaService.findAll()
     			.stream()
@@ -92,7 +68,8 @@ public class PessoaController {
     }
     
     public PessoaDTO toPessoaDto (Pessoa pessoa) {
-    	return modelMapper.map(pessoa, PessoaDTO.class);
+        PessoaDTO pessoaDTO =  modelMapper.map(pessoa, PessoaDTO.class);
+    	return pessoaDTO;
     }
     
    /* @RequestMapping(value = "/salvar", method = RequestMethod.POST)
