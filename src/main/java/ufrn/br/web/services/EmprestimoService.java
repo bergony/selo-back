@@ -21,27 +21,26 @@ public class EmprestimoService {
 
     @Autowired
     LivroService livroService;
-/*    public void responder(Long id, boolean reposta, Long admin, Model model){
+  public void responder(Long id, boolean reposta, Integer admin){
         Emprestimo emprestimo = emprestimoRepository.findById(id).orElse(null);
         emprestimo.setReposta(reposta);
         emprestimoRepository.save(emprestimo);
 
         Pessoa usuarioLogando = pessoaService.findPessoalByID(admin);
-        livroService.carregar(model, usuarioLogando);
-        model.addAttribute("usuarioLogando", usuarioLogando);
-    }*/
+        livroService.carregar( usuarioLogando);
+    }
 
 
-/*    public void save(Emprestimo emprestimo, Livro livro) {
+   public void save(Emprestimo emprestimo, Livro livro) {
         emprestimo = emprestimoRepository.save(emprestimo);
 
         livro.setEmprestimo(emprestimo);
         livroService.salvar(livro);
 
-    }*/
+    }
 
-/*    @Transactional
-    public void deletar(Long id, boolean reposta, Long admin, Model model){
+    @Transactional
+    public void deletar(Long id, boolean reposta, Integer admin){
         Emprestimo emprestimo = emprestimoRepository.findById(id).orElse(null);
         Livro livro = livroService.findLivroEmprestimo(emprestimo);
         livro.setEmprestimo(null);
@@ -49,8 +48,7 @@ public class EmprestimoService {
         emprestimoRepository.delete(emprestimo);
 
         Pessoa usuarioLogando = pessoaService.findPessoalByID(admin);
-        livroService.carregar(model, usuarioLogando);
-        model.addAttribute("usuarioLogando", usuarioLogando);
-    }*/
+        livroService.carregar(usuarioLogando);
+    }
 
 }

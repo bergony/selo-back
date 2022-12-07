@@ -1,8 +1,12 @@
 package ufrn.br.web.services;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import ufrn.br.web.dto.EmprestimoDTO;
+import ufrn.br.web.dto.LivroDTO;
+import ufrn.br.web.dto.PessoaDTO;
 import ufrn.br.web.model.Emprestimo;
 import ufrn.br.web.model.Livro;
 import ufrn.br.web.model.Pessoa;
@@ -11,10 +15,12 @@ import ufrn.br.web.repositoreis.LivroRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class LivroService {
-/*
+
     @Autowired
     LivroRepository livroRepository;
 
@@ -23,6 +29,9 @@ public class LivroService {
 
     @Autowired
     PessoaService pessoaService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     public Livro findLivroByID(Long id) {
         return livroRepository.findById(id).orElse(null);
@@ -47,17 +56,17 @@ public class LivroService {
             sucessos.add("livro salvo com sucesso!");
             model.addAttribute("sucessos", sucessos);
         }
-        carregar(model, livro.getPessoa());
+        carregar( livro.getPessoa());
 
         return livroSaved;
 
     }
-/*
-    public Livro editarLivro(Model model, Long id, Long admin){
+
+    public Livro editarLivro(Model model, Long id, Integer admin){
 
         Livro livro = livroRepository.findById(id).orElse(null);
-        carregarMeusLivros(model, livro.getPessoa());
-        carregarMeusEmprestimo(model, livro.getPessoa());
+        carregarMeusLivros(livro.getPessoa());
+        carregarMeusEmprestimo(livro.getPessoa());
         model.addAttribute("livro", livro);
 
         Pessoa usuarioLogando = pessoaService.findPessoalByID(admin);
@@ -65,12 +74,12 @@ public class LivroService {
         return livro;
     }
 
-    public Livro deletarLivro(Model model, Long id, Long admin){
+    public Livro deletarLivro(Model model, Long id, Integer admin){
 
         Livro livro = livroRepository.findById(id).orElse(null);
         livroRepository.delete(livro);
         List<Livro> livros = livroRepository.findAll();
-        carregar(model, livro.getPessoa());
+        carregar(livro.getPessoa());
 
         Pessoa usuarioLogando = pessoaService.findPessoalByID(admin);
         model.addAttribute("usuarioLogando", usuarioLogando);
@@ -81,13 +90,29 @@ public class LivroService {
 
 
 
-    public void carregarMeusLivros(Model model, Pessoa usuarioLogando){
-        List<Livro> livros = livroRepository.findAllByUserName(usuarioLogando.getUsername());
-        model.addAttribute("livros", livros);
-
+    public List<LivroDTO> carregarMeusLivros(Pessoa usuarioLogando){
+        return livroRepository.findAllByUserName(usuarioLogando.getNomeCompleto()).stream()
+                .map(this::toLivroDto)
+                .collect(Collectors.toList());
     }
 
-    public void carregarMeusEmprestimo(Model model, Pessoa usuarioLogado){
+
+    public LivroDTO toLivroDto (Livro livro) {
+        LivroDTO livroDTO =  modelMapper.map(livro, LivroDTO.class);
+        return livroDTO;
+    }
+
+    public EmprestimoDTO toEmprestimoDto (Emprestimo emprestimo) {
+        EmprestimoDTO emprestimoDTO =  EmprestimoDTO.builder()
+                .descricaoLivro(emprestimo.getLivro().getDescricao())
+                .nomeDono(emprestimo.getPessoa().getNomeCompleto())
+                .reposta(emprestimo.isReposta()).build();
+        return emprestimoDTO;
+    }
+
+
+
+    public    List<EmprestimoDTO>  carregarMeusEmprestimo(Pessoa usuarioLogado){
         List<Emprestimo> emprestimos = emprestimoRepository.findAll();
 
         emprestimos.forEach( e -> {
@@ -101,24 +126,24 @@ public class LivroService {
             if(e.getLivro() == null || (e.getPessoa().getId() != usuarioLogado.getId() && e.getLivro().getPessoa().getId() != usuarioLogado.getId())){
                 return true;
             }
-
             return false;
         });
-        model.addAttribute("emprestimos",emprestimos );
 
+        return emprestimos.stream()
+                .map(this::toEmprestimoDto)
+                .collect(Collectors.toList());
     }
 
-    public void reset(Model model, Pessoa usuarioLogado){
+    public void reset( Pessoa usuarioLogado){
         Livro livro = new Livro();
         livro.setId(0l);
         livro.setPessoa(usuarioLogado);
-        model.addAttribute("livro", livro);
     }
 
-    public void carregar(Model model, Pessoa usuarioLogado){
-        carregarMeusLivros(model, usuarioLogado);
-        carregarMeusEmprestimo(model, usuarioLogado);
-        reset(model, usuarioLogado);
+    public void carregar(Pessoa usuarioLogado){
+        carregarMeusLivros( usuarioLogado);
+        carregarMeusEmprestimo(usuarioLogado);
+        reset(usuarioLogado);
     }
 
     public  List<Livro> carregalivrosDisponiveis(){
@@ -127,6 +152,6 @@ public class LivroService {
 
     public Livro findLivroEmprestimo(Emprestimo emprestimo) {
         return livroRepository.findByEmprestimoAtivo(emprestimo.getId());
-    }*/
+    }
 
 }

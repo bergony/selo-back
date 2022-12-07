@@ -4,14 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ufrn.br.web.model.Pessoa;
 import ufrn.br.web.services.EmprestimoService;
 import ufrn.br.web.services.LivroService;
 import ufrn.br.web.services.PessoaService;
 
-@Controller
+@RestController
 @RequestMapping("/api/emprestimos")
 @RequiredArgsConstructor
 public class EmprestimoController {
@@ -25,21 +24,26 @@ public class EmprestimoController {
 
     @Autowired
     PessoaService pessoaService;
-  /*  @RequestMapping(value = "/aceitar")
-    public String aceitar(Model model, @RequestParam(value = "id", required = false) Long id, @RequestParam(value = "admin", required = false) Long admin) {
-        emprestimoService.responder(id, true, admin, model);
+    @PutMapping("/aceitar/{idEmprestimo}/{idUser}")
+    public String aceitar(@PathVariable Long idEmprestimo, @RequestBody Pessoa pessoa,@PathVariable Integer  idUser) {
+        emprestimoService.responder(idEmprestimo, true, idUser);
         return "livros";
     }
 
-    @RequestMapping(value = "/negar")
-    public String negar(Model model, @RequestParam(value = "id", required = false) Long id, @RequestParam(value = "admin", required = false) Long admin) {
-        emprestimoService.responder(id, false, admin, model);
+    @RequestMapping(value = "/negar/{idEmprestimo}/{idUser}\"")
+    public String negar(@PathVariable Long idEmprestimo, @RequestBody Pessoa pessoa,@PathVariable Integer  idUser) {
+        emprestimoService.responder(idEmprestimo, false, idUser);
         return "livros";
     }
 
-    @RequestMapping(value = "/deletarEmprestimo")
-    public String deletar(Model model, @RequestParam(value = "id", required = false) Long id, @RequestParam(value = "admin", required = false) Long admin) {
-        emprestimoService.deletar(id, false, admin, model);
+    @RequestMapping(value = "/deletarEmprestimo/{idEmprestimo}/{idUser}")
+    public String deletar(@PathVariable Long idEmprestimo, @RequestBody Pessoa pessoa,@PathVariable Integer  idUser) {
+        emprestimoService.deletar(idEmprestimo, false, idUser);
         return "livros";
-    }*/
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

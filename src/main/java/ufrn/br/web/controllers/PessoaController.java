@@ -22,9 +22,6 @@ import ufrn.br.web.services.PessoaService;
 @RequestMapping("/api/pessoas")
 @RequiredArgsConstructor
 public class PessoaController {
-
-
-
 	@Autowired
     private PessoaService pessoaService;
 

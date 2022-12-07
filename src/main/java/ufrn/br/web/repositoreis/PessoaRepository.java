@@ -2,6 +2,7 @@ package ufrn.br.web.repositoreis;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,6 +17,7 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Integer> {
 
     @Query("select p from Pessoa p where p.nomeCompleto = :nomeCompleto")
     Pessoa findByUserNameAndPassword(@Param("nomeCompleto") String nomeCompleto);
+
     
     //Pessoa findByEmprestimos ();
 }

@@ -98,7 +98,14 @@ public class PessoaService {
     public Pessoa editarPessoa  (Integer id, Pessoa pessoa) {
     	Pessoa atual = findPessoalByID(id);
     	if (atual != null) {
-    		atual = pessoa;
+            if(pessoa.getCpf() != null)
+                atual.setCpf(pessoa.getCpf());
+
+            if(pessoa.getNomeCompleto() != null)
+                atual.setNomeCompleto(pessoa.getNomeCompleto());
+
+            if(pessoa.getLogin() != null)
+                atual.setLogin(pessoa.getLogin());
     		pessoaRepository.save(atual);
     	}
     	return null;

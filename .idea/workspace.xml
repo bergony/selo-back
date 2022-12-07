@@ -4,15 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec86a937-2629-487a-9810-5e418f5ce407" name="Changes" comment="Adicioando swagger e profiles no projeto.">
+    <list default="true" id="ec86a937-2629-487a-9810-5e418f5ce407" name="Changes" comment="Addi id no delete.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/EmprestimoDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/EmprestimoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/EmprestimoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/PessoaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/PessoaDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/LivroDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/dto/LivroDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/PessoaRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/repositoreis/PessoaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/EmprestimoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/EmprestimoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/LivroService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/LivroService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/EmprestimoController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/EmprestimoController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/PessoaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/controllers/PessoaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/UsuarioService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/dto/LivroDTO$LivroDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/dto/LivroDTO$LivroDTOBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/dto/LivroDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/dto/LivroDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/dto/PessoaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/dto/PessoaDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/EmprestimoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/EmprestimoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/LivroService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/LivroService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/PessoaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ufrn/br/web/services/PessoaService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +194,8 @@
       <workItem from="1669903088902" duration="248000" />
       <workItem from="1669975888907" duration="2983000" />
       <workItem from="1670069317758" duration="8500000" />
-      <workItem from="1670324324028" duration="5658000" />
+      <workItem from="1670324324028" duration="6550000" />
+      <workItem from="1670408991122" duration="7322000" />
     </task>
     <task id="LOCAL-00001" summary="Teste Commit">
       <created>1651681901537</created>
@@ -292,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670110089333</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Addi id no delete.">
+      <created>1670357304333</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1670357304333</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +367,8 @@
     <MESSAGE value="Refatorado segurancao e adicionado Usuario." />
     <MESSAGE value="Finalizado JWT e regras de negocios da autorizacao." />
     <MESSAGE value="Adicioando swagger e profiles no projeto." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicioando swagger e profiles no projeto." />
+    <MESSAGE value="Addi id no delete." />
+    <option name="LAST_COMMIT_MESSAGE" value="Addi id no delete." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -371,7 +389,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
-          <line>89</line>
+          <line>86</line>
           <option name="timeStamp" value="233" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -391,7 +409,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/EmprestimoService.java</url>
-          <line>35</line>
+          <line>34</line>
           <option name="timeStamp" value="243" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -406,22 +424,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/EmprestimoService.java</url>
-          <line>37</line>
+          <line>36</line>
           <option name="timeStamp" value="246" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/EmprestimoService.java</url>
-          <line>38</line>
+          <line>37</line>
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/EmprestimoController.java</url>
-          <line>29</line>
+          <line>28</line>
           <option name="timeStamp" value="248" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/EmprestimoController.java</url>
-          <line>30</line>
+          <line>29</line>
           <option name="timeStamp" value="251" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -431,32 +449,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/EmprestimoService.java</url>
-          <line>48</line>
+          <line>47</line>
           <option name="timeStamp" value="253" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
-          <line>106</line>
+          <line>103</line>
           <option name="timeStamp" value="262" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
-          <line>101</line>
+          <line>98</line>
           <option name="timeStamp" value="264" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
-          <line>103</line>
+          <line>100</line>
           <option name="timeStamp" value="265" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
-          <line>104</line>
+          <line>101</line>
           <option name="timeStamp" value="266" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
-          <line>97</line>
+          <line>94</line>
           <option name="timeStamp" value="268" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -503,6 +521,50 @@
           <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/LivroController.java</url>
           <line>52</line>
           <option name="timeStamp" value="311" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="313" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="314" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="315" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/controllers/PessoaController.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="316" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="317" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="318" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/PessoaService.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="319" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/ufrn/br/web/services/LivroService.java</url>
+          <line>148</line>
+          <properties class="ufrn.br.web.services.LivroService" method="carregalivrosDisponiveis">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="320" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

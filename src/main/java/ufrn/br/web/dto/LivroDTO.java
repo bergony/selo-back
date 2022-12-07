@@ -17,7 +17,6 @@ public class LivroDTO {
 
     private String descricao;
     private String titulo;
-    private String data_lancamento;
     private Integer pessoaId;
     private Integer emprestimoID;
 }
